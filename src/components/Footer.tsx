@@ -1,114 +1,71 @@
 
-import { Mail, Phone, MapPin, Clock, FacebookIcon, InstagramIcon, TwitterIcon } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin, Github } from 'lucide-react';
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
-  
   return (
-    <footer className="bg-green-800 text-white">
-      <div className="container-custom py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Column 1: About */}
-          <div>
-            <h3 className="text-xl font-display font-bold mb-4">Olive Press Museum</h3>
-            <p className="text-green-100 mb-6">
-              Step back in time and discover the traditional methods of olive oil production at our beautifully preserved 19th century museum.
-            </p>
-            <div className="flex space-x-4">
-              <a href="#" className="text-white hover:text-green-200 transition-colors">
-                <FacebookIcon className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-white hover:text-green-200 transition-colors">
-                <InstagramIcon className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-white hover:text-green-200 transition-colors">
-                <TwitterIcon className="h-5 w-5" />
-              </a>
+    <footer className="bg-black py-16 border-t border-white/10">
+      <div className="container-custom">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 mb-12">
+          <div className="md:col-span-6">
+            <div className="flex space-x-4 mb-6">
+              {[Facebook, Twitter, Instagram, Linkedin, Github].map((Icon, i) => (
+                <a 
+                  key={i}
+                  href="#" 
+                  className="w-8 h-8 rounded-full flex items-center justify-center border border-white/20 hover:border-white/50 transition-colors"
+                >
+                  <Icon className="w-4 h-4" />
+                </a>
+              ))}
             </div>
           </div>
           
-          {/* Column 2: Visit Us */}
-          <div>
-            <h3 className="text-lg font-bold mb-4">Visit Us</h3>
-            <ul className="space-y-3">
-              <li className="flex">
-                <MapPin className="h-5 w-5 mr-2 flex-shrink-0 mt-0.5" />
-                <span className="text-green-100">
-                  123 Countryside Road<br />
-                  Olive Village, OV 12345<br />
-                  Greece
-                </span>
-              </li>
-              <li className="flex">
-                <Clock className="h-5 w-5 mr-2 flex-shrink-0 mt-0.5" />
-                <span className="text-green-100">
-                  Open daily: 9:00 AM - 5:00 PM<br />
-                  Closed on Mondays
-                </span>
-              </li>
-            </ul>
-          </div>
-          
-          {/* Column 3: Contact */}
-          <div>
-            <h3 className="text-lg font-bold mb-4">Contact</h3>
-            <ul className="space-y-3">
-              <li className="flex">
-                <Phone className="h-5 w-5 mr-2 flex-shrink-0 mt-0.5" />
-                <a href="tel:+301234567890" className="text-green-100 hover:text-white">
-                  +30 123 456 7890
-                </a>
-              </li>
-              <li className="flex">
-                <Mail className="h-5 w-5 mr-2 flex-shrink-0 mt-0.5" />
-                <a href="mailto:info@olivemuseum.com" className="text-green-100 hover:text-white">
-                  info@olivemuseum.com
-                </a>
-              </li>
-            </ul>
-            <div className="mt-4">
-              <Link to="/contact" className="text-white hover:text-green-200 underline">
-                Send us a message
-              </Link>
+          <div className="md:col-span-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div>
+                <h4 className="text-sm font-semibold mb-4">Contact Us</h4>
+                <ul className="space-y-3">
+                  <li className="flex items-center space-x-2 text-sm text-gray-400 hover:text-white transition-colors">
+                    <Mail className="w-4 h-4" />
+                    <a href="mailto:contact@arctean.com">contact@arctean.com</a>
+                  </li>
+                  <li className="flex items-center space-x-2 text-sm text-gray-400 hover:text-white transition-colors">
+                    <Phone className="w-4 h-4" />
+                    <a href="tel:+1234567890">+1 (234) 567-890</a>
+                  </li>
+                  <li className="flex items-start space-x-2 text-sm text-gray-400 hover:text-white transition-colors">
+                    <MapPin className="w-4 h-4 mt-0.5" />
+                    <span>123 Finance Street, New York, NY 10001</span>
+                  </li>
+                </ul>
+              </div>
+              
+              <div>
+                <h4 className="text-sm font-semibold mb-4">Navigation</h4>
+                <ul className="space-y-2">
+                  {['Home', 'Services', 'About', 'Projects', 'FAQ', 'Careers', 'Privacy Policy'].map((item, i) => (
+                    <li key={i}>
+                      <a href="#" className="text-sm text-gray-400 hover:text-white transition-colors">{item}</a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-          </div>
-          
-          {/* Column 4: Quick Links */}
-          <div>
-            <h3 className="text-lg font-bold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/" className="text-green-100 hover:text-white transition-colors">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <a href="/#museum" className="text-green-100 hover:text-white transition-colors">
-                  About the Museum
-                </a>
-              </li>
-              <li>
-                <a href="/#tours" className="text-green-100 hover:text-white transition-colors">
-                  Tours & Experiences
-                </a>
-              </li>
-              <li>
-                <a href="/#testimonials" className="text-green-100 hover:text-white transition-colors">
-                  Visitor Testimonials
-                </a>
-              </li>
-              <li>
-                <Link to="/contact" className="text-green-100 hover:text-white transition-colors">
-                  Contact Us
-                </Link>
-              </li>
-            </ul>
           </div>
         </div>
         
-        <div className="mt-12 pt-8 border-t border-green-700 text-center text-green-200">
-          <p>&copy; {currentYear} Olive Press Museum. All rights reserved.</p>
+        <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/10">
+          <div className="text-4xl md:text-5xl font-display font-bold tracking-tighter mb-6 md:mb-0">
+            ARCTEAN
+          </div>
+          
+          <div className="text-xs text-gray-400">
+            <p>© 2023 Arctean. All Rights Reserved.</p>
+            <div className="flex space-x-4 mt-2">
+              <a href="#" className="hover:text-white transition-colors">Terms & Conditions</a>
+              <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+            </div>
+          </div>
         </div>
       </div>
     </footer>

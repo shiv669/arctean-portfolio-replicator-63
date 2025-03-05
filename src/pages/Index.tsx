@@ -1,12 +1,12 @@
+
 import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import Museum from "@/components/Museum";
-import Tours from "@/components/Tours";
-import Testimonials from "@/components/Testimonials";
+import Philosophy from "@/components/Philosophy";
+import Projects from "@/components/Projects";
+import FeaturedProject from "@/components/FeaturedProject";
 import Faq from "@/components/Faq";
 import Footer from "@/components/Footer";
-import Process from "@/components/Process";
 
 const Index = () => {
   // Smooth scroll initialization
@@ -37,13 +37,12 @@ const Index = () => {
   }, []);
   
   return (
-    <div className="min-h-screen bg-white text-black">
+    <div className="min-h-screen bg-black text-white">
       <Navbar />
       <Hero />
-      <Museum />
-      <Process />
-      <Tours />
-      <Testimonials />
+      <Philosophy />
+      <Projects />
+      <FeaturedProject />
       <Faq />
       <Footer />
     </div>

@@ -35,8 +35,13 @@ const Navbar = () => {
     >
       <div className="container-custom flex items-center justify-between">
         <Link to="/" className="flex items-center">
-          <h1 className="text-2xl font-display font-bold text-green-700">
-            Olive Press <span className="text-gray-500">Museum</span>
+          <img 
+            src="/lovable-uploads/29c9a2ab-6227-4db5-be3a-b2266c33d8f3.png" 
+            alt="Olive Mill Logo" 
+            className="h-16 w-16 object-contain"
+          />
+          <h1 className="ml-3 text-2xl font-display font-bold text-green-700 hidden sm:block">
+            Olive Mill <span className="text-gray-500">Museum</span>
           </h1>
         </Link>
 

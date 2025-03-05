@@ -9,33 +9,33 @@
 
 @layer base {
   :root {
-    --background: 0 0% 0%;
-    --foreground: 0 0% 100%;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
 
-    --card: 0 0% 3%;
-    --card-foreground: 0 0% 100%;
+    --card: 160 30% 98%;
+    --card-foreground: 0 0% 0%;
 
-    --popover: 0 0% 3%;
-    --popover-foreground: 0 0% 100%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
 
-    --primary: 265 90% 65%;
+    --primary: 160 60% 40%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 160 30% 95%;
+    --secondary-foreground: 160 60% 25%;
 
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 75%;
+    --muted: 160 10% 90%;
+    --muted-foreground: 0 0% 45%;
 
-    --accent: 265 90% 65%;
+    --accent: 16 100% 55%;
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 62.8% 30.6%;
+    --destructive: 0 100% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
+    --border: 160 30% 90%;
+    --input: 160 30% 90%;
+    --ring: 160 30% 50%;
 
     --radius: 0.5rem;
   }
@@ -47,7 +47,7 @@
   }
 
   html, body {
-    @apply bg-black text-white antialiased scroll-smooth;
+    @apply bg-white text-black antialiased scroll-smooth;
     font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
   }
   
@@ -56,7 +56,7 @@
   }
   
   ::selection {
-    @apply bg-purple-500/30 text-white;
+    @apply bg-green-500/30 text-black;
   }
 }
 
@@ -74,7 +74,7 @@
   }
   
   .blur-dot {
-    @apply w-1.5 h-1.5 rounded-full bg-white/90;
+    @apply w-1.5 h-1.5 rounded-full bg-green-600;
     filter: blur(1px);
   }
 }
@@ -85,11 +85,11 @@
   }
   
   .glass-card {
-    @apply bg-black/30 backdrop-blur-sm border border-white/10 transition-all;
+    @apply bg-white/90 backdrop-blur-sm border border-green-100 transition-all;
   }
   
   .glass-card-hover {
-    @apply hover:bg-white/5 hover:border-white/20 transition-all;
+    @apply hover:bg-green-50 hover:border-green-200 transition-all;
   }
 }
 
@@ -100,14 +100,14 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #000000;
+  background: #ffffff;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #333333;
+  background: #48C9B0;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #444444;
+  background: #2EAE92;
 }

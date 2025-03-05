@@ -1,46 +1,135 @@
 
 import { useState, useEffect } from 'react';
-import { cn } from "@/lib/utils";
+import { Menu, X } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
-  const [scrolled, setScrolled] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
   
+  // Handle scroll event to change navbar background
   useEffect(() => {
     const handleScroll = () => {
-      const isScrolled = window.scrollY > 20;
-      if (isScrolled !== scrolled) {
-        setScrolled(isScrolled);
-      }
+      setIsScrolled(window.scrollY > 10);
     };
-
+    
     window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [scrolled]);
-
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+  
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [location.pathname]);
+  
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+  
   return (
-    <header className={cn(
-      "fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300",
-      scrolled ? "bg-black/80 backdrop-blur-md border-b border-white/5" : "bg-transparent"
-    )}>
-      <div className="container-custom flex items-center justify-between py-4">
-        <a href="/" className="text-lg font-display font-bold tracking-tight">
-          Arctean
-        </a>
-        
-        <div className="hidden md:flex items-center space-x-6">
-          <div className="text-xs text-gray-400">
-            ABOUT US. SERVICES. PROJECTS. FAQ.
-          </div>
-          <a 
-            href="#contact" 
-            className="text-xs uppercase font-medium border-b border-white/40 hover:border-white transition-colors"
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled ? 'bg-white shadow-sm' : 'bg-transparent'
+      }`}
+    >
+      <div className="container-custom">
+        <div className="flex items-center justify-between h-20">
+          {/* Logo */}
+          <Link to="/" className="flex items-center">
+            <img src="/lovable-uploads/5bcd528d-112e-474a-8251-5080ad8c870b.png" alt="Olive Press Museum" className="h-10" />
+            <span className="ml-2 font-display font-bold text-xl text-green-800">Olive Press Museum</span>
+          </Link>
+          
+          {/* Desktop Menu */}
+          <nav className="hidden md:flex items-center space-x-6">
+            <Link 
+              to="/" 
+              className="text-green-800 hover:text-green-600 font-medium transition-colors"
+            >
+              Home
+            </Link>
+            <a 
+              href="/#museum" 
+              className="text-green-800 hover:text-green-600 font-medium transition-colors"
+            >
+              Museum
+            </a>
+            <a 
+              href="/#tours" 
+              className="text-green-800 hover:text-green-600 font-medium transition-colors"
+            >
+              Tours
+            </a>
+            <a 
+              href="/#testimonials" 
+              className="text-green-800 hover:text-green-600 font-medium transition-colors"
+            >
+              Testimonials
+            </a>
+            <Link 
+              to="/contact" 
+              className="text-green-800 hover:text-green-600 font-medium transition-colors"
+            >
+              Contact
+            </Link>
+            <Button className="bg-orange-500 hover:bg-orange-600">
+              Book Now
+            </Button>
+          </nav>
+          
+          {/* Mobile Menu Button */}
+          <button 
+            className="md:hidden text-green-800 focus:outline-none"
+            onClick={toggleMobileMenu}
+            aria-label="Toggle mobile menu"
           >
-            Contact Us
-          </a>
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
       </div>
+      
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div className="md:hidden bg-white border-t border-green-100">
+          <div className="container-custom py-4 space-y-4">
+            <Link 
+              to="/" 
+              className="block py-2 text-green-800 hover:text-green-600 font-medium"
+            >
+              Home
+            </Link>
+            <a 
+              href="/#museum" 
+              className="block py-2 text-green-800 hover:text-green-600 font-medium"
+            >
+              Museum
+            </a>
+            <a 
+              href="/#tours" 
+              className="block py-2 text-green-800 hover:text-green-600 font-medium"
+            >
+              Tours
+            </a>
+            <a 
+              href="/#testimonials" 
+              className="block py-2 text-green-800 hover:text-green-600 font-medium"
+            >
+              Testimonials
+            </a>
+            <Link 
+              to="/contact" 
+              className="block py-2 text-green-800 hover:text-green-600 font-medium"
+            >
+              Contact
+            </Link>
+            <Button className="w-full bg-orange-500 hover:bg-orange-600">
+              Book Now
+            </Button>
+          </div>
+        </div>
+      )}
     </header>
   );
 };

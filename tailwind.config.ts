@@ -53,8 +53,28 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+        // Updated colors for olive press museum
         black: '#000000',
         white: '#FFFFFF',
+        green: {
+          100: '#E9F7EF',
+          200: '#D4EFE1',
+          300: '#A3E4D7',
+          400: '#82D0BA',
+          500: '#48C9B0',
+          600: '#2EAE92',
+          700: '#1E8571',
+          800: '#17664A',
+          900: '#0E453C',
+        },
+        orange: {
+          500: '#FF5722',
+          600: '#E64A19',
+        },
+        red: {
+          500: '#E53935',
+          600: '#D32F2F',
+        },
         gray: {
           100: '#F5F5F5',
           200: '#E5E5E5',
@@ -65,14 +85,6 @@ export default {
           700: '#404040',
           800: '#262626',
           900: '#171717',
-        },
-        purple: {
-          500: '#8B5CF6',
-          600: '#7C3AED',
-        },
-        blue: {
-          400: '#60A5FA',
-          500: '#3B82F6',
         },
 			},
 			fontFamily: {

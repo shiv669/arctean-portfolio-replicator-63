@@ -1,9 +1,62 @@
 
-import { useEffect, useRef } from 'react';
-import { ArrowRight } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { ArrowRight, Calendar, Users } from 'lucide-react';
+import { format } from 'date-fns';
+import { Calendar as CalendarComponent } from '@/components/ui/calendar';
+import { Button } from '@/components/ui/button';
+import { useToast } from '@/hooks/use-toast';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import { useNavigate } from 'react-router-dom';
 
 const Hero = () => {
   const dotsRef = useRef<HTMLDivElement>(null);
+  const [date, setDate] = useState<Date | undefined>(undefined);
+  const [visitors, setVisitors] = useState<string>("1-5");
+  const { toast } = useToast();
+  const navigate = useNavigate();
+  
+  // Price calculation based on group size
+  const getPrice = () => {
+    switch(visitors) {
+      case "1-5": return 50;
+      case "6-10": return 90;
+      case "11-20": return 160;
+      case "21-30": return 200;
+      default: return 50;
+    }
+  };
+  
+  const handleProceedCheckout = () => {
+    if (!date) {
+      toast({
+        title: "Please select a date",
+        description: "You need to select a date for your visit",
+        variant: "destructive",
+      });
+      return;
+    }
+    
+    // Store booking info in sessionStorage
+    sessionStorage.setItem('booking', JSON.stringify({
+      date: date.toISOString(),
+      visitors,
+      price: getPrice(),
+    }));
+    
+    // Navigate to checkout
+    navigate('/checkout');
+  };
   
   useEffect(() => {
     if (!dotsRef.current) return;
@@ -27,19 +80,18 @@ const Hero = () => {
     <section className="relative min-h-screen flex flex-col justify-center pt-20 overflow-hidden">
       <div className="container-custom relative z-10">
         <div className="max-w-4xl">
-          <h1 className="h1 mb-1 animate-fade-in-up [animation-delay:200ms]">
-            Securing 
+          <h1 className="h1 mb-1 animate-fade-in-up [animation-delay:200ms] text-green-800">
+            Historic Olive Press
             <br />
-            generational
-            <br />
-            wealth
-            <br />
-            <span className="text-gray-400">through</span> tech
+            <span className="text-green-600">Since 1860</span>
           </h1>
+          <p className="text-xl mb-6 animate-fade-in-up [animation-delay:300ms] text-gray-700 max-w-2xl">
+            Experience the traditional methods of olive oil production in our beautifully preserved 19th century museum.
+          </p>
           
           <div 
             ref={dotsRef}
-            className="flex items-center space-x-2 mt-4 mb-24 animate-fade-in-up [animation-delay:400ms]"
+            className="flex items-center space-x-2 mt-4 mb-12 animate-fade-in-up [animation-delay:400ms]"
           >
             {[...Array(4)].map((_, i) => (
               <div key={i} className="blur-dot"></div>
@@ -47,46 +99,65 @@ const Hero = () => {
           </div>
         </div>
         
-        <div className="grid grid-cols-3 gap-3 mt-8 animate-fade-in-up [animation-delay:600ms]">
-          <div className="col-span-3 md:col-span-1">
-            <p className="text-sm uppercase tracking-wider opacity-70">Our capabilities</p>
-          </div>
-          <div className="col-span-3 md:col-span-1 flex items-center justify-center">
-            <div className="flex gap-2 overflow-x-auto pb-2">
-              <div className="rounded-md overflow-hidden h-16 w-28 bg-gray-800 flex-shrink-0">
-                <img 
-                  src="/lovable-uploads/5bcd528d-112e-474a-8251-5080ad8c870b.png" 
-                  alt="Wealth security" 
-                  className="h-full w-full object-cover opacity-80 hover:opacity-100 transition-opacity"
-                />
-              </div>
-              <div className="rounded-md overflow-hidden h-16 w-28 bg-gray-800 flex-shrink-0">
-                <img 
-                  src="https://images.unsplash.com/photo-1566228015668-4c45dbc4e2f5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80" 
-                  alt="Technology" 
-                  className="h-full w-full object-cover opacity-80 hover:opacity-100 transition-opacity"
-                />
-              </div>
-              <div className="rounded-md overflow-hidden h-16 w-28 bg-gray-800 flex-shrink-0">
-                <img 
-                  src="https://images.unsplash.com/photo-1639322537504-6427a16b0a28?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1932&q=80" 
-                  alt="Financial security" 
-                  className="h-full w-full object-cover opacity-80 hover:opacity-100 transition-opacity"
-                />
-              </div>
+        {/* Booking Calendar Widget */}
+        <div className="bg-white rounded-xl shadow-md p-6 mb-20 max-w-4xl animate-fade-in-up [animation-delay:500ms] border border-green-100">
+          <h2 className="text-2xl font-display font-bold mb-6 text-green-800">Book Your Visit</h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="space-y-2">
+              <label className="block text-sm font-medium text-gray-700">Select Date</label>
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Button 
+                    variant="outline" 
+                    className="w-full justify-start text-left font-normal border-green-200"
+                  >
+                    <Calendar className="mr-2 h-4 w-4 text-green-600" />
+                    {date ? format(date, 'PPP') : <span>Pick a date</span>}
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-auto p-0" align="start">
+                  <CalendarComponent
+                    mode="single"
+                    selected={date}
+                    onSelect={setDate}
+                    initialFocus
+                    className="p-3 pointer-events-auto"
+                  />
+                </PopoverContent>
+              </Popover>
             </div>
-          </div>
-          <div className="col-span-3 md:col-span-1 flex md:justify-end items-center">
-            <button className="flex items-center space-x-2 text-sm hover:text-purple-500 transition-colors group">
-              <span>See all work</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </button>
+            
+            <div className="space-y-2">
+              <label className="block text-sm font-medium text-gray-700">Number of Visitors</label>
+              <Select defaultValue="1-5" onValueChange={setVisitors}>
+                <SelectTrigger className="border-green-200">
+                  <SelectValue placeholder="Select group size" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="1-5">1-5 people (€50)</SelectItem>
+                  <SelectItem value="6-10">6-10 people (€90)</SelectItem>
+                  <SelectItem value="11-20">11-20 people (€160)</SelectItem>
+                  <SelectItem value="21-30">21-30 people (€200)</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            
+            <div className="flex items-end">
+              <Button 
+                onClick={handleProceedCheckout}
+                className="w-full bg-orange-500 hover:bg-orange-600 text-white"
+              >
+                Proceed to Checkout
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </div>
           </div>
         </div>
       </div>
       
-      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black/20 to-transparent"></div>
-      <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,rgba(138,107,246,0.15)_0%,rgba(0,0,0,0)_50%)]"></div>
+      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-white/20 to-transparent"></div>
+      <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,rgba(72,201,176,0.15)_0%,rgba(255,255,255,0)_50%)]"></div>
     </section>
   );
 };

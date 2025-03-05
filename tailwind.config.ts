@@ -66,31 +66,19 @@ export default {
           800: '#262626',
           900: '#171717',
         },
-        green: {
-          100: '#F2FCE2',
-          200: '#E3F4D3',
-          300: '#C5E8A6',
-          400: '#9DD26A',
-          500: '#6CAE39',
-          600: '#4A8E25',
-          700: '#3B6F1F',
-          800: '#2C5217',
-          900: '#1D3610',
+        purple: {
+          500: '#8B5CF6',
+          600: '#7C3AED',
         },
-        orange: {
-          500: '#FF5722',
-          600: '#E64A19',
-        },
-        red: {
-          500: '#E53935',
-          600: '#D32F2F',
+        blue: {
+          400: '#60A5FA',
+          500: '#3B82F6',
         },
 			},
 			fontFamily: {
 				sans: ['Inter', 'sans-serif'],
-				display: ['Playfair Display', 'serif'],
+				display: ['Satoshi', 'Inter', 'sans-serif'],
 				mono: ['JetBrains Mono', 'monospace'],
-        satoshi: ['Satoshi', 'sans-serif'],
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

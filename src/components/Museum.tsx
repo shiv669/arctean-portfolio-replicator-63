@@ -1,6 +1,8 @@
 
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const Museum = () => {
   return (
@@ -20,6 +22,26 @@ const Museum = () => {
                 Today, we invite visitors to step back in time and experience the authentic processes that created what was once called "liquid gold" - the extra virgin olive oil that remains central to Mediterranean cuisine and culture.
               </p>
             </div>
+            
+            <div className="mt-8 flex flex-col sm:flex-row sm:items-center gap-4">
+              <div className="flex items-center text-green-700">
+                <span className="inline-block w-8 h-8 rounded-full bg-green-100 text-center leading-8 mr-3 font-semibold">1</span>
+                <span>19th Century Equipment</span>
+              </div>
+              <div className="flex items-center text-green-700">
+                <span className="inline-block w-8 h-8 rounded-full bg-green-100 text-center leading-8 mr-3 font-semibold">2</span>
+                <span>Living History Exhibits</span>
+              </div>
+              <div className="flex items-center text-green-700">
+                <span className="inline-block w-8 h-8 rounded-full bg-green-100 text-center leading-8 mr-3 font-semibold">3</span>
+                <span>Traditional Techniques</span>
+              </div>
+            </div>
+            
+            <Button className="mt-8 bg-orange-500 hover:bg-orange-600">
+              View Museum History
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
           </div>
           
           <div className="relative overflow-hidden rounded-xl shadow-lg">
@@ -45,6 +67,10 @@ const Museum = () => {
               <CarouselPrevious className="text-green-800" />
               <CarouselNext className="text-green-800" />
             </Carousel>
+            
+            <div className="absolute bottom-4 left-4 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-lg text-green-800 font-medium text-sm">
+              Authentic since 1860
+            </div>
           </div>
         </div>
       </div>

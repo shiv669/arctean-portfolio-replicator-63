@@ -1,4 +1,3 @@
-
 import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
@@ -7,6 +6,7 @@ import Tours from "@/components/Tours";
 import Testimonials from "@/components/Testimonials";
 import Faq from "@/components/Faq";
 import Footer from "@/components/Footer";
+import Process from "@/components/Process";
 
 const Index = () => {
   // Smooth scroll initialization
@@ -41,6 +41,7 @@ const Index = () => {
       <Navbar />
       <Hero />
       <Museum />
+      <Process />
       <Tours />
       <Testimonials />
       <Faq />

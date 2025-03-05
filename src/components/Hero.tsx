@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from 'react';
 import { ArrowRight, Calendar, Users } from 'lucide-react';
 import { format } from 'date-fns';
@@ -26,7 +25,6 @@ const Hero = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
   
-  // Price calculation based on group size
   const getPrice = () => {
     switch(visitors) {
       case "1-5": return 50;
@@ -47,14 +45,12 @@ const Hero = () => {
       return;
     }
     
-    // Store booking info in sessionStorage
     sessionStorage.setItem('booking', JSON.stringify({
       date: date.toISOString(),
       visitors,
       price: getPrice(),
     }));
     
-    // Navigate to checkout
     navigate('/checkout');
   };
   
@@ -78,6 +74,15 @@ const Hero = () => {
   
   return (
     <section className="relative min-h-screen flex flex-col justify-center pt-20 overflow-hidden">
+      <div className="absolute inset-0 z-0">
+        <img 
+          src="https://images.unsplash.com/photo-1594076419199-5f7c32a69657?w=1920&q=90" 
+          alt="Historic olive press background" 
+          className="w-full h-full object-cover opacity-15"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/90 to-white"></div>
+      </div>
+      
       <div className="container-custom relative z-10">
         <div className="max-w-4xl">
           <h1 className="h1 mb-1 animate-fade-in-up [animation-delay:200ms] text-green-800">
@@ -99,8 +104,7 @@ const Hero = () => {
           </div>
         </div>
         
-        {/* Booking Calendar Widget */}
-        <div className="bg-white rounded-xl shadow-md p-6 mb-20 max-w-4xl animate-fade-in-up [animation-delay:500ms] border border-green-100">
+        <div className="bg-white/95 backdrop-blur-sm rounded-xl shadow-md p-6 mb-20 max-w-4xl animate-fade-in-up [animation-delay:500ms] border border-green-100">
           <h2 className="text-2xl font-display font-bold mb-6 text-green-800">Book Your Visit</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

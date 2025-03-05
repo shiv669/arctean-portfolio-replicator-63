@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -9,7 +8,6 @@ const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
   
-  // Handle scroll event to change navbar background
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
@@ -19,7 +17,6 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   
-  // Close mobile menu when route changes
   useEffect(() => {
     setMobileMenuOpen(false);
   }, [location.pathname]);
@@ -36,13 +33,11 @@ const Navbar = () => {
     >
       <div className="container-custom">
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
           <Link to="/" className="flex items-center">
-            <img src="/lovable-uploads/5bcd528d-112e-474a-8251-5080ad8c870b.png" alt="Olive Press Museum" className="h-10" />
+            <img src="/lovable-uploads/5af96ee3-a533-4620-bfc9-3fdc4c84965d.png" alt="Olive Press Museum" className="h-12" />
             <span className="ml-2 font-display font-bold text-xl text-green-800">Olive Press Museum</span>
           </Link>
           
-          {/* Desktop Menu */}
           <nav className="hidden md:flex items-center space-x-6">
             <Link 
               to="/" 
@@ -55,6 +50,12 @@ const Navbar = () => {
               className="text-green-800 hover:text-green-600 font-medium transition-colors"
             >
               Museum
+            </a>
+            <a 
+              href="/#process" 
+              className="text-green-800 hover:text-green-600 font-medium transition-colors"
+            >
+              Process
             </a>
             <a 
               href="/#tours" 
@@ -79,7 +80,6 @@ const Navbar = () => {
             </Button>
           </nav>
           
-          {/* Mobile Menu Button */}
           <button 
             className="md:hidden text-green-800 focus:outline-none"
             onClick={toggleMobileMenu}
@@ -90,7 +90,6 @@ const Navbar = () => {
         </div>
       </div>
       
-      {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div className="md:hidden bg-white border-t border-green-100">
           <div className="container-custom py-4 space-y-4">
@@ -105,6 +104,12 @@ const Navbar = () => {
               className="block py-2 text-green-800 hover:text-green-600 font-medium"
             >
               Museum
+            </a>
+            <a 
+              href="/#process" 
+              className="block py-2 text-green-800 hover:text-green-600 font-medium"
+            >
+              Process
             </a>
             <a 
               href="/#tours" 

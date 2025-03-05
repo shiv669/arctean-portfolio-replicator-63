@@ -9,14 +9,14 @@ const tourOptions = [
     description: "A comprehensive 60-minute tour of the olive press museum with an expert guide explaining the traditional processes.",
     duration: "60 minutes",
     includes: ["Guided tour", "Olive oil tasting", "Historical explanation"],
-    image: "https://images.unsplash.com/photo-1541625602330-2277a4c46182?w=800&q=80"
+    image: "https://images.unsplash.com/photo-1558466570-6d1f2afb32a3?w=800&q=80"
   },
   {
     title: "Extended Experience",
     description: "An in-depth 90-minute experience including the standard tour plus a hands-on demonstration of the traditional pressing methods.",
     duration: "90 minutes",
     includes: ["Guided tour", "Olive oil tasting", "Hands-on demonstration", "Small bottle of olive oil"],
-    image: "https://images.unsplash.com/photo-1603796910494-d9f5a24a76a1?w=800&q=80"
+    image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=800&q=80"
   },
   {
     title: "Family Adventure",
@@ -24,6 +24,13 @@ const tourOptions = [
     duration: "75 minutes",
     includes: ["Child-friendly guide", "Interactive activities", "Tasting session", "Souvenir for kids"],
     image: "https://images.unsplash.com/photo-1615291115661-c2bdba3755ad?w=800&q=80"
+  },
+  {
+    title: "Culinary Journey",
+    description: "A 120-minute immersive experience focused on the culinary aspects of olive oil, including a tasting session with local products.",
+    duration: "120 minutes",
+    includes: ["Extended guided tour", "Premium olive oil tasting", "Local cuisine sampling", "Recipe booklet"],
+    image: "https://images.unsplash.com/photo-1473091534298-04dcbce3278c?w=800&q=80"
   }
 ];
 
@@ -38,7 +45,7 @@ const Tours = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {tourOptions.map((tour, index) => (
             <Card key={index} className="overflow-hidden border border-green-100 hover:shadow-md transition-shadow">
               <div className="h-48 overflow-hidden">

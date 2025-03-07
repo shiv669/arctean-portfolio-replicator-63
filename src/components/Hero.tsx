@@ -70,7 +70,7 @@ const Hero = () => {
   };
   
   // Split text into words for animation
-  const headingText = "Your Digital Vault for Generational Wealth Protection";
+  const headingText = "Secure Your Legacy with Digital Vault Technology";
   const words = headingText.split(" ");
   
   return (
@@ -107,15 +107,14 @@ const Hero = () => {
               >
                 {i === 3 && <br />}
                 {i === 5 && <br />}
-                {i === 6 && <span className="text-gray-400">{word} </span>}
-                {i !== 6 && word}{' '}
+                {word}{' '}
               </motion.span>
             ))}
           </motion.h1>
           
           <motion.div 
             ref={dotsRef}
-            className="flex items-center space-x-2 mt-4 mb-24"
+            className="flex items-center space-x-2 mt-4 mb-12"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.5, duration: 1 }}
@@ -173,7 +172,7 @@ const Hero = () => {
                 whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
               >
                 <img 
-                  src="/lovable-uploads/5bcd528d-112e-474a-8251-5080ad8c870b.png" 
+                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" 
                   alt="Asset Security" 
                   className="h-full w-full object-cover opacity-80 hover:opacity-100 transition-opacity"
                 />
@@ -187,7 +186,7 @@ const Hero = () => {
                 whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
               >
                 <img 
-                  src="https://images.unsplash.com/photo-1566228015668-4c45dbc4e2f5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80" 
+                  src="https://images.unsplash.com/photo-1566228015668-4c45dbc4e2f6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80" 
                   alt="Digital Legacy" 
                   className="h-full w-full object-cover opacity-80 hover:opacity-100 transition-opacity"
                 />

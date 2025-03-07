@@ -2,8 +2,9 @@
 import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import Philosophy from "@/components/Philosophy";
-import Projects from "@/components/Projects";
+import WhyArctean from "@/components/WhyArctean";
+import AssetVault from "@/components/AssetVault";
+import Audience from "@/components/Audience";
 import FeaturedProject from "@/components/FeaturedProject";
 import Faq from "@/components/Faq";
 import Footer from "@/components/Footer";
@@ -40,8 +41,9 @@ const Index = () => {
     <div className="min-h-screen bg-black text-white">
       <Navbar />
       <Hero />
-      <Philosophy />
-      <Projects />
+      <WhyArctean />
+      <AssetVault />
+      <Audience />
       <FeaturedProject />
       <Faq />
       <Footer />

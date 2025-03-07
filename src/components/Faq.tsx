@@ -5,28 +5,28 @@ import { cn } from '@/lib/utils';
 
 const faqItems = [
   {
-    question: "What services does Arctean offer?",
-    answer: "Arctean provides comprehensive wealth security solutions including digital asset management, blockchain-based inheritance systems, financial technology consulting, secure portfolio diversification, and custom wealth preservation strategies tailored to multi-generational needs."
+    question: "What types of assets can I protect with Arctean?",
+    answer: "Arctean supports virtually any asset type—physical or digital. This includes real estate (land, homes, commercial property), vehicles, business ownership, financial assets (stocks, bonds, bank accounts), digital assets (cryptocurrency, NFTs), collectibles, insurance policies, and intellectual property. Our platform is designed to be comprehensive."
   },
   {
-    question: "How does Arctean help secure generational wealth?",
-    answer: "We employ advanced technology to create robust wealth preservation systems that protect assets across generations, implement smart contract solutions for seamless inheritance, develop secure digital vaults for critical financial information, and provide ongoing monitoring against emerging threats."
+    question: "How does Arctean verify ownership of my assets?",
+    answer: "Our proprietary Asset DNA™ technology uses multiple verification methods including document analysis, blockchain validation for digital assets, historical transaction verification, and metadata comparison. This multi-layered approach creates a fraud-proof verification system that doesn't rely on external government APIs."
   },
   {
-    question: "Can legacy financial institutions integrate with your solutions?",
-    answer: "Yes, our systems are designed to integrate seamlessly with traditional financial infrastructure while adding enhanced security layers. We create custom APIs and secure bridges between conventional banking systems and next-generation financial technology."
+    question: "Can I specify different inheritance rules for different assets?",
+    answer: "Absolutely. Arctean allows you to create custom inheritance rules for each asset. You can distribute percentages of ownership to multiple heirs, set up time-based transfers (e.g., when your child turns 25), create milestone-based transfers (e.g., upon graduation), or establish conditional transfers based on specific events."
   },
   {
-    question: "How do you ensure privacy and security in your wealth management tools?",
-    answer: "We implement military-grade encryption, multi-signature authorization, biometric authentication, and distributed ledger technologies. All solutions undergo rigorous penetration testing and security audits, and we maintain compliance with international financial regulations."
+    question: "Is Arctean legally binding for inheritance purposes?",
+    answer: "While Arctean creates a comprehensive digital record of your assets and intentions, we recommend complementing our service with standard legal documents like wills and trusts. Arctean significantly simplifies the legal process by providing clear documentation and preventing disputes over ownership or asset existence."
   },
   {
-    question: "What makes Arctean different from other financial security providers?",
-    answer: "Our unique approach combines cutting-edge technology with traditional wealth preservation principles. We focus exclusively on multi-generational asset security, employ a team of both financial experts and security engineers, and provide truly customized solutions rather than one-size-fits-all products."
+    question: "How secure is the Arctean platform?",
+    answer: "Arctean employs military-grade encryption, decentralized storage, multi-factor authentication, and regular security audits. Each asset record is backed by blockchain technology for immutability. We never store complete asset information in a single location, making the system highly resistant to breaches or unauthorized access."
   },
   {
-    question: "How does your team stay current with evolving financial threats?",
-    answer: "Our dedicated research division constantly monitors emerging threats to wealth security, we maintain partnerships with leading cybersecurity firms, participate in financial technology standards development, and regularly update all client systems with the latest protection measures."
+    question: "What happens if I need to update my asset information or beneficiaries?",
+    answer: "You can update your asset information or beneficiary details at any time through your secure Arctean dashboard. The system maintains a complete history of changes for transparency while ensuring that only your latest instructions are implemented. All changes are securely logged with timestamps and verification."
   }
 ];
 
@@ -143,10 +143,10 @@ const Faq = () => {
           
           <div className="max-w-lg">
             <p className="text-sm text-gray-400 mb-6">
-              Need more information? Here are the most common questions about our services and solutions for securing generational wealth.
+              Need more information about how Arctean can secure and transfer your generational wealth? Here are answers to our most commonly asked questions.
             </p>
             <a href="#contact" className="text-sm underline underline-offset-4 text-gray-400 hover:text-white transition-colors">
-              Contact us for more detailed information
+              Contact us for personalized wealth security solutions
             </a>
           </div>
         </div>

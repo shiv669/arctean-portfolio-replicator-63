@@ -30,14 +30,17 @@ const Navbar = () => {
         </a>
         
         <div className="hidden md:flex items-center space-x-6">
-          <div className="text-xs text-gray-400">
-            ABOUT US. SERVICES. PROJECTS. FAQ.
-          </div>
+          <nav className="flex space-x-6 text-xs text-gray-400">
+            <a href="#features" className="hover:text-white transition-colors">FEATURES</a>
+            <a href="#solutions" className="hover:text-white transition-colors">SOLUTIONS</a>
+            <a href="#about" className="hover:text-white transition-colors">ABOUT</a>
+            <a href="#faq" className="hover:text-white transition-colors">FAQ</a>
+          </nav>
           <a 
             href="#contact" 
             className="text-xs uppercase font-medium border-b border-white/40 hover:border-white transition-colors"
           >
-            Contact Us
+            Secure Your Legacy
           </a>
         </div>
       </div>

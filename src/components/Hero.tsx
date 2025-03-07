@@ -28,13 +28,13 @@ const Hero = () => {
       <div className="container-custom relative z-10">
         <div className="max-w-4xl">
           <h1 className="h1 mb-1 animate-fade-in-up [animation-delay:200ms]">
-            Securing 
+            Your Digital 
             <br />
-            generational
+            Vault for
             <br />
-            wealth
+            Generational
             <br />
-            <span className="text-gray-400">through</span> tech
+            <span className="text-gray-400">Wealth</span> Protection
           </h1>
           
           <div 
@@ -56,21 +56,21 @@ const Hero = () => {
               <div className="rounded-md overflow-hidden h-16 w-28 bg-gray-800 flex-shrink-0">
                 <img 
                   src="/lovable-uploads/5bcd528d-112e-474a-8251-5080ad8c870b.png" 
-                  alt="Wealth security" 
+                  alt="Asset Security" 
                   className="h-full w-full object-cover opacity-80 hover:opacity-100 transition-opacity"
                 />
               </div>
               <div className="rounded-md overflow-hidden h-16 w-28 bg-gray-800 flex-shrink-0">
                 <img 
                   src="https://images.unsplash.com/photo-1566228015668-4c45dbc4e2f5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80" 
-                  alt="Technology" 
+                  alt="Digital Legacy" 
                   className="h-full w-full object-cover opacity-80 hover:opacity-100 transition-opacity"
                 />
               </div>
               <div className="rounded-md overflow-hidden h-16 w-28 bg-gray-800 flex-shrink-0">
                 <img 
                   src="https://images.unsplash.com/photo-1639322537504-6427a16b0a28?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1932&q=80" 
-                  alt="Financial security" 
+                  alt="Wealth Transfer" 
                   className="h-full w-full object-cover opacity-80 hover:opacity-100 transition-opacity"
                 />
               </div>
@@ -78,7 +78,7 @@ const Hero = () => {
           </div>
           <div className="col-span-3 md:col-span-1 flex md:justify-end items-center">
             <button className="flex items-center space-x-2 text-sm hover:text-purple-500 transition-colors group">
-              <span>See all work</span>
+              <span>Explore features</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
           </div>

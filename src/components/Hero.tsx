@@ -69,7 +69,7 @@ const Hero = () => {
     }
   };
   
-  // Split text into words for animation
+  // Split text into words for animation - fixed spacing issues
   const headingText = "Secure Your Legacy with Digital Vault Technology";
   const words = headingText.split(" ");
   
@@ -103,11 +103,9 @@ const Hero = () => {
               <motion.span 
                 key={i} 
                 variants={wordVariants}
-                className="inline-block mr-[0.25em]"
+                className="inline-block"
               >
-                {i === 3 && <br />}
-                {i === 5 && <br />}
-                {word}{' '}
+                {word}{i !== words.length - 1 ? ' ' : ''}
               </motion.span>
             ))}
           </motion.h1>
@@ -172,7 +170,7 @@ const Hero = () => {
                 whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
               >
                 <img 
-                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" 
+                  src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" 
                   alt="Asset Security" 
                   className="h-full w-full object-cover opacity-80 hover:opacity-100 transition-opacity"
                 />
@@ -186,7 +184,7 @@ const Hero = () => {
                 whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
               >
                 <img 
-                  src="https://images.unsplash.com/photo-1566228015668-4c45dbc4e2f6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80" 
+                  src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" 
                   alt="Digital Legacy" 
                   className="h-full w-full object-cover opacity-80 hover:opacity-100 transition-opacity"
                 />
@@ -200,7 +198,7 @@ const Hero = () => {
                 whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
               >
                 <img 
-                  src="https://images.unsplash.com/photo-1639322537504-6427a16b0a28?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1932&q=80" 
+                  src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" 
                   alt="Wealth Transfer" 
                   className="h-full w-full object-cover opacity-80 hover:opacity-100 transition-opacity"
                 />

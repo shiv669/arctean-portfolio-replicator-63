@@ -1,10 +1,11 @@
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ArrowRight } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 
 const FeaturedProject = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const [isHovered, setIsHovered] = useState(false);
   
   // Animation variants
   const containerVariants = {
@@ -31,47 +32,89 @@ const FeaturedProject = () => {
     }
   };
   
-  // Animate section on scroll
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('opacity-100');
-          entry.target.classList.remove('opacity-0', 'translate-y-5');
-        }
-      });
-    }, { threshold: 0.1 });
-    
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-    
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+  // Particle animation
+  const particles = Array.from({ length: 20 }).map((_, i) => ({
+    id: i,
+    x: Math.random() * 100,
+    y: Math.random() * 100,
+    size: Math.random() * 2 + 1,
+    speed: Math.random() * 1 + 0.5,
+  }));
+  
+  // Use scroll progress to trigger animations
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+  
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.6, 1, 1, 0.6]);
+  const scale = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.95, 1, 1, 0.95]);
+  const y = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [30, 0, 0, 30]);
+  
+  // Text reveal animation
+  const textReveal = {
+    hidden: { y: 20, opacity: 0 },
+    visible: { 
+      y: 0, 
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        ease: [0.22, 1, 0.36, 1]
       }
-    };
-  }, []);
+    }
+  };
   
   return (
     <section 
       ref={sectionRef}
-      className="py-16 transition-all duration-700 opacity-0 translate-y-5"
+      className="py-16 transition-all duration-700"
     >
       <div className="container-custom">
         <motion.div 
-          className="relative group"
+          className="relative group cursor-pointer"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
+          style={{ opacity, scale, y }}
+          onHoverStart={() => setIsHovered(true)}
+          onHoverEnd={() => setIsHovered(false)}
         >
           <motion.div 
-            className="absolute -inset-0.5 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-xl blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+            className="absolute -inset-0.5 bg-gradient-to-r from-purple-500/20 via-blue-500/20 to-purple-500/20 rounded-xl blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500"
             variants={borderVariants}
             initial="initial"
             animate="animate"
           ></motion.div>
+          
+          {/* Animated particles */}
+          <AnimatePresence>
+            {isHovered && particles.map(particle => (
+              <motion.div
+                key={particle.id}
+                className="absolute w-1 h-1 rounded-full bg-purple-500/60 z-10 pointer-events-none"
+                initial={{ 
+                  x: `${particle.x}%`, 
+                  y: `${particle.y}%`,
+                  opacity: 0,
+                  scale: 0
+                }}
+                animate={{ 
+                  x: `${particle.x + (Math.random() * 10 - 5)}%`,
+                  y: `${particle.y - particle.speed * 20}%`,
+                  opacity: [0, 1, 0],
+                  scale: [0, particle.size, 0]
+                }}
+                exit={{ opacity: 0, scale: 0 }}
+                transition={{ 
+                  duration: particle.speed * 4,
+                  ease: "easeOut",
+                  times: [0, 0.3, 1]
+                }}
+                style={{ width: `${particle.size}px`, height: `${particle.size}px` }}
+              />
+            ))}
+          </AnimatePresence>
           
           <div className="relative overflow-hidden rounded-xl">
             <div className="bg-gray-900 p-6 md:p-10">
@@ -114,7 +157,7 @@ const FeaturedProject = () => {
                 
                 <div className="col-span-12">
                   <motion.div 
-                    className="w-full aspect-[16/8] bg-black rounded-lg overflow-hidden"
+                    className="w-full aspect-[16/8] bg-black rounded-lg overflow-hidden relative"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
@@ -125,15 +168,88 @@ const FeaturedProject = () => {
                       alt="Asset DNA Technology" 
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                     />
+                    
+                    {/* Visual DNA strand animation */}
+                    <motion.div 
+                      className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black pointer-events-none"
+                      animate={{
+                        backgroundPosition: ['0% 0%', '100% 0%'],
+                      }}
+                      transition={{
+                        duration: 10,
+                        repeat: Infinity,
+                        repeatType: 'reverse',
+                      }}
+                    />
+                    
+                    <motion.div 
+                      className="absolute inset-0 flex items-center justify-center"
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      transition={{ delay: 0.5, duration: 0.8 }}
+                      viewport={{ once: true }}
+                    >
+                      <div className="relative w-1/2 h-20 overflow-hidden">
+                        {[...Array(10)].map((_, i) => (
+                          <motion.div
+                            key={i}
+                            className="absolute w-6 h-6 rounded-full bg-purple-500/30 backdrop-blur-sm"
+                            initial={{ 
+                              x: i % 2 === 0 ? '0%' : '100%', 
+                              y: `${i * 10}%`,
+                              opacity: 0.3 
+                            }}
+                            animate={{ 
+                              x: i % 2 === 0 ? '100%' : '0%',
+                              opacity: [0.3, 0.8, 0.3], 
+                            }}
+                            transition={{ 
+                              duration: 5 + i * 0.5, 
+                              repeat: Infinity, 
+                              repeatType: 'reverse',
+                              ease: "easeInOut" 
+                            }}
+                            style={{
+                              top: `${i * 10}%`,
+                              left: i % 2 === 0 ? '0%' : 'auto',
+                              right: i % 2 === 0 ? 'auto' : '0%',
+                            }}
+                          />
+                        ))}
+                        
+                        {/* Connecting lines */}
+                        {[...Array(9)].map((_, i) => (
+                          <motion.div
+                            key={`line-${i}`}
+                            className="absolute h-0.5 bg-gradient-to-r from-purple-500/30 to-blue-500/30"
+                            style={{
+                              top: `${i * 10 + 5}%`,
+                              left: '0',
+                              right: '0',
+                              transformOrigin: i % 2 === 0 ? 'left' : 'right',
+                            }}
+                            initial={{ scaleX: 0 }}
+                            animate={{ scaleX: 1 }}
+                            transition={{ 
+                              duration: 1.5, 
+                              delay: i * 0.1,
+                              repeat: Infinity,
+                              repeatType: 'reverse',
+                              repeatDelay: 4,
+                            }}
+                          />
+                        ))}
+                      </div>
+                    </motion.div>
                   </motion.div>
                 </div>
                 
                 <div className="col-span-12 mt-6">
                   <motion.p 
                     className="text-gray-400 text-sm max-w-3xl"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ duration: 0.5, delay: 0.4 }}
+                    variants={textReveal}
+                    initial="hidden"
+                    whileInView="visible"
                     viewport={{ once: true }}
                   >
                     Our revolutionary Asset DNA™ technology creates a unique digital fingerprint for each of your assets by analyzing multiple data points including metadata, transaction history, and ownership records. This ensures that your assets cannot be fraudulently claimed or transferred without authorization.

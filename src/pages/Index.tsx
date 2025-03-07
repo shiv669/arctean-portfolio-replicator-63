@@ -8,6 +8,10 @@ import Audience from "@/components/Audience";
 import FeaturedProject from "@/components/FeaturedProject";
 import Faq from "@/components/Faq";
 import Footer from "@/components/Footer";
+import InteractiveFeatures from "@/components/InteractiveFeatures";
+import MetricsSection from "@/components/MetricsSection";
+import TestimonialsSlider from "@/components/TestimonialsSlider";
+import ParallaxFeatures from "@/components/ParallaxFeatures";
 
 const Index = () => {
   // Smooth scroll initialization
@@ -43,7 +47,11 @@ const Index = () => {
       <Hero />
       <WhyArctean />
       <AssetVault />
+      <InteractiveFeatures />
+      <ParallaxFeatures />
+      <MetricsSection />
       <Audience />
+      <TestimonialsSlider />
       <FeaturedProject />
       <Faq />
       <Footer />

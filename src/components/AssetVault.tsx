@@ -1,6 +1,5 @@
-
 import { useEffect, useRef } from 'react';
-import { Shield, RefreshCw, UserCheck, Users } from 'lucide-react';
+import { Shield, RefreshCw, UserCheck, Users, ArrowRight } from 'lucide-react';
 
 const AssetVault = () => {
   const sectionRef = useRef<HTMLElement>(null);

@@ -10,7 +10,27 @@ const features = [
     description: 'Your assets are protected with military-grade encryption and decentralized storage systems that prevent unauthorized access.',
     icon: <LockIcon className="w-6 h-6 text-purple-400" />,
     color: 'from-purple-500/20 to-blue-500/10',
-    preview: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80'
+    preview: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80',
+    code: {
+      language: 'typescript',
+      fileName: 'secure-vault.ts',
+      content: [
+        '// AES-256 Encryption Implementation',
+        'export class SecureVault {',
+        '  private encryptionKey: CryptoKey;',
+        '',
+        '  async encrypt(data: Asset): Promise<EncryptedAsset> {',
+        '    const iv = crypto.getRandomValues(new Uint8Array(16));',
+        '    const encrypted = await crypto.subtle.encrypt(',
+        '      { name: "AES-GCM", iv },',
+        '      this.encryptionKey,',
+        '      new TextEncoder().encode(JSON.stringify(data))',
+        '    );',
+        '    return { data: encrypted, iv, signature: await this.sign(data) };',
+        '  }',
+        '}'
+      ]
+    }
   },
   {
     id: 'fraud-prevention',
@@ -18,7 +38,27 @@ const features = [
     description: 'Our proprietary Asset DNA™ technology creates a unique signature for each asset that makes forgery virtually impossible.',
     icon: <ShieldCheck className="w-6 h-6 text-purple-400" />,
     color: 'from-blue-500/20 to-purple-500/10',
-    preview: 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80'
+    preview: 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80',
+    code: {
+      language: 'typescript',
+      fileName: 'asset-dna.ts',
+      content: [
+        '// Asset DNA Generation Algorithm',
+        'export class AssetDNA {',
+        '  generateFingerprint(asset: Asset): string {',
+        '    const dataPoints = [',
+        '      asset.metadata,',
+        '      asset.transactionHistory,',
+        '      asset.ownershipRecords',
+        '    ];',
+        '    ',
+        '    return this.hashingFunction(',
+        '      this.combineDataPoints(dataPoints)',
+        '    );',
+        '  }',
+        '}'
+      ]
+    }
   },
   {
     id: 'blockchain-integration',
@@ -26,7 +66,32 @@ const features = [
     description: 'Assets are verified and recorded on multiple blockchain networks, creating an immutable record of ownership that stands up to legal scrutiny.',
     icon: <Database className="w-6 h-6 text-purple-400" />,
     color: 'from-purple-500/20 to-indigo-500/10',
-    preview: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80'
+    preview: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80',
+    code: {
+      language: 'solidity',
+      fileName: 'AssetRegistry.sol',
+      content: [
+        '// SPDX-License-Identifier: MIT',
+        'pragma solidity ^0.8.0;',
+        '',
+        'contract AssetRegistry {',
+        '    mapping(bytes32 => Asset) private assets;',
+        '    ',
+        '    function registerAsset(',
+        '        bytes32 dnaFingerprint,',
+        '        address owner',
+        '    ) public returns (bool) {',
+        '        assets[dnaFingerprint] = Asset({',
+        '            owner: owner,',
+        '            timestamp: block.timestamp,',
+        '            verified: true',
+        '        });',
+        '        emit AssetRegistered(dnaFingerprint, owner);',
+        '        return true;',
+        '    }',
+        '}'
+      ]
+    }
   },
   {
     id: 'smart-inheritance',
@@ -34,7 +99,32 @@ const features = [
     description: 'Define rules for asset transfer that execute automatically under conditions you set, ensuring your wealth passes to the right hands.',
     icon: <Link className="w-6 h-6 text-purple-400" />,
     color: 'from-indigo-500/20 to-purple-500/10',
-    preview: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80'
+    preview: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80',
+    code: {
+      language: 'typescript',
+      fileName: 'inheritance-rules.ts',
+      content: [
+        '// Smart Inheritance Rules Engine',
+        'export class InheritanceRules {',
+        '  createRule(options: {',
+        '    assets: Asset[],',
+        '    beneficiaries: Person[],',
+        '    conditions: Condition[],',
+        '    timelock?: number',
+        '  }) {',
+        '    return new SmartRule({',
+        '      ...options,',
+        '      executionTrigger: this.buildTriggerFromConditions(',
+        '        options.conditions',
+        '      ),',
+        '      verification: this.createMultiSigVerification(',
+        '        options.beneficiaries',
+        '      )',
+        '    });',
+        '  }',
+        '}'
+      ]
+    }
   }
 ];
 
@@ -67,6 +157,30 @@ const codeBlockAnimation = {
   initial: { opacity: 0, scale: 0.9 },
   animate: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
   exit: { opacity: 0, scale: 0.9, transition: { duration: 0.3 } }
+};
+
+const typingAnimation = {
+  hidden: { width: "0%" },
+  visible: (i: number) => ({
+    width: "100%",
+    transition: { 
+      delay: i * 0.05,
+      duration: 0.5,
+      ease: "easeInOut"
+    }
+  })
+};
+
+const cursorBlink = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: [0, 1, 0],
+    transition: {
+      repeat: Infinity,
+      repeatType: "loop" as const,
+      duration: 1
+    }
+  }
 };
 
 const InteractiveFeatures = () => {
@@ -192,68 +306,97 @@ const InteractiveFeatures = () => {
                           initial="initial"
                           animate="animate"
                           exit="exit"
-                          className="w-full max-w-md aspect-[3/2] bg-black/40 backdrop-blur-sm border border-white/10 rounded-lg p-6 shadow-xl"
+                          className="w-full max-w-md bg-black/70 backdrop-blur-md border border-white/10 rounded-lg p-6 shadow-xl overflow-hidden"
                         >
-                          <div className="flex items-center space-x-2 mb-4">
-                            <motion.div 
-                              className="w-3 h-3 rounded-full bg-red-500"
-                              whileHover={{ scale: 1.2 }}
-                            ></motion.div>
-                            <motion.div 
-                              className="w-3 h-3 rounded-full bg-yellow-500"
-                              whileHover={{ scale: 1.2 }}
-                            ></motion.div>
-                            <motion.div 
-                              className="w-3 h-3 rounded-full bg-green-500"
-                              whileHover={{ scale: 1.2 }}
-                            ></motion.div>
+                          <div className="flex items-center justify-between mb-4">
+                            <div className="flex items-center space-x-2">
+                              <motion.div 
+                                className="w-3 h-3 rounded-full bg-red-500"
+                                whileHover={{ scale: 1.2 }}
+                              ></motion.div>
+                              <motion.div 
+                                className="w-3 h-3 rounded-full bg-yellow-500"
+                                whileHover={{ scale: 1.2 }}
+                              ></motion.div>
+                              <motion.div 
+                                className="w-3 h-3 rounded-full bg-green-500"
+                                whileHover={{ scale: 1.2 }}
+                              ></motion.div>
+                            </div>
                             
-                            <div className="h-4 w-40 bg-white/10 rounded ml-3"></div>
+                            <div className="text-xs text-gray-400 font-mono">
+                              {feature.code.fileName}
+                            </div>
                           </div>
                           
-                          <div className="space-y-3">
-                            <motion.div 
-                              className="h-3 w-full bg-white/10 rounded"
-                              initial={{ width: "100%" }}
-                              animate={{ width: ["100%", "70%", "85%"] }}
-                              transition={{ duration: 3, repeat: Infinity, repeatType: "reverse" }}
-                            ></motion.div>
-                            <motion.div 
-                              className="h-3 w-4/5 bg-white/10 rounded"
-                              initial={{ width: "80%" }}
-                              animate={{ width: ["80%", "60%", "75%"] }}
-                              transition={{ duration: 4, repeat: Infinity, repeatType: "reverse" }}
-                            ></motion.div>
-                            <motion.div 
-                              className="h-3 w-3/4 bg-white/10 rounded"
-                              initial={{ width: "75%" }}
-                              animate={{ width: ["75%", "50%", "65%"] }}
-                              transition={{ duration: 3.5, repeat: Infinity, repeatType: "reverse" }}
-                            ></motion.div>
+                          <div className="font-mono text-xs sm:text-sm space-y-1 overflow-hidden">
+                            {feature.code.content.map((line, i) => (
+                              <div key={i} className="flex">
+                                <div className="text-gray-500 w-6 flex-shrink-0 text-right mr-2">
+                                  {i + 1}
+                                </div>
+                                <motion.div 
+                                  className="text-gray-300 overflow-hidden whitespace-nowrap relative"
+                                  custom={i}
+                                  variants={typingAnimation}
+                                  initial="hidden"
+                                  animate="visible"
+                                >
+                                  {line.includes('//') ? (
+                                    <>
+                                      <span className="text-green-400">{line}</span>
+                                    </>
+                                  ) : line.includes('class') || line.includes('function') || line.includes('contract') ? (
+                                    <>
+                                      <span className="text-purple-400">{line.split(' ')[0]}</span>
+                                      <span className="text-white"> {line.split(' ').slice(1).join(' ')}</span>
+                                    </>
+                                  ) : line.includes('export') ? (
+                                    <>
+                                      <span className="text-blue-400">{line.split(' ')[0]}</span>
+                                      <span className="text-purple-400"> {line.split(' ')[1]}</span>
+                                      <span className="text-white"> {line.split(' ').slice(2).join(' ')}</span>
+                                    </>
+                                  ) : line.includes('return') ? (
+                                    <>
+                                      <span className="text-red-400">return</span>
+                                      <span className="text-white">{line.slice(6)}</span>
+                                    </>
+                                  ) : line.includes('await') ? (
+                                    <>
+                                      <span className="text-yellow-300">{line}</span>
+                                    </>
+                                  ) : line.includes('private') || line.includes('public') ? (
+                                    <>
+                                      <span className="text-blue-400">{line.split(' ')[0]}</span>
+                                      <span className="text-white"> {line.split(' ').slice(1).join(' ')}</span>
+                                    </>
+                                  ) : (
+                                    <span>{line}</span>
+                                  )}
+                                </motion.div>
+                              </div>
+                            ))}
                             
-                            <div className="py-2"></div>
-                            
-                            <motion.div 
-                              className="h-3 w-5/6 bg-purple-500/30 rounded"
-                              initial={{ width: "85%" }}
-                              animate={{ width: ["85%", "70%", "80%"] }}
-                              transition={{ duration: 3.2, repeat: Infinity, repeatType: "reverse" }}
-                            ></motion.div>
-                            <motion.div 
-                              className="h-3 w-2/3 bg-purple-500/30 rounded"
-                              initial={{ width: "67%" }}
-                              animate={{ width: ["67%", "55%", "63%"] }}
-                              transition={{ duration: 2.8, repeat: Infinity, repeatType: "reverse" }}
-                            ></motion.div>
+                            <div className="h-4 relative">
+                              <motion.div 
+                                className="absolute left-0 top-0 w-2 h-4 bg-white"
+                                variants={cursorBlink}
+                                initial="hidden"
+                                animate="visible"
+                              ></motion.div>
+                            </div>
                           </div>
                           
-                          <div className="mt-6 flex justify-end">
-                            <motion.div 
-                              className="h-8 w-20 bg-purple-500/30 rounded"
+                          <motion.div className="mt-4 flex justify-end">
+                            <motion.button
+                              className="text-xs bg-purple-500/50 text-white px-3 py-1 rounded hover:bg-purple-500/80 transition-colors font-mono"
                               whileHover={{ scale: 1.05 }}
                               whileTap={{ scale: 0.95 }}
-                            ></motion.div>
-                          </div>
+                            >
+                              Execute {feature.id === 'blockchain-integration' ? 'Contract' : 'Function'}
+                            </motion.button>
+                          </motion.div>
                         </motion.div>
                       </div>
                     </motion.div>
@@ -269,3 +412,4 @@ const InteractiveFeatures = () => {
 };
 
 export default InteractiveFeatures;
+

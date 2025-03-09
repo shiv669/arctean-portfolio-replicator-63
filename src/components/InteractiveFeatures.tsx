@@ -1,59 +1,64 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
-import { LockIcon, ShieldCheck, Database, Link } from 'lucide-react';
+import { LockIcon, ShieldCheck, Database, TrendingUp } from 'lucide-react';
 
 const features = [
   {
-    id: 'secure-storage',
-    title: 'Ultra-Secure Storage',
-    description: 'Your assets are protected with military-grade encryption and decentralized storage systems that prevent unauthorized access.',
-    icon: <LockIcon className="w-6 h-6 text-purple-400" />,
-    color: 'from-purple-500/20 to-blue-500/10',
-    preview: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80',
+    id: 'value-investing',
+    title: 'Value Investing Approach',
+    description: 'Our disciplined application of fundamental analysis reviews financial statements and observable information to identify undervalued securities.',
+    icon: <TrendingUp className="w-6 h-6 text-sandgrey-600" />,
+    color: 'from-sandgrey-500/20 to-sandgrey-600/10',
+    preview: 'https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80',
     code: {
       language: 'typescript',
-      fileName: 'secure-vault.ts',
+      fileName: 'value-analyzer.ts',
       content: [
-        '// AES-256 Encryption Implementation',
-        'export class SecureVault {',
-        '  private encryptionKey: CryptoKey;',
+        '// Value Investing Analysis Implementation',
+        'export class ValueAnalyzer {',
+        '  private economicFactors: EconomicData;',
         '',
-        '  async encrypt(data: Asset): Promise<EncryptedAsset> {',
-        '    const iv = crypto.getRandomValues(new Uint8Array(16));',
-        '    const encrypted = await crypto.subtle.encrypt(',
-        '      { name: "AES-GCM", iv },',
-        '      this.encryptionKey,',
-        '      new TextEncoder().encode(JSON.stringify(data))',
-        '    );',
-        '    return { data: encrypted, iv, signature: await this.sign(data) };',
+        '  async analyzeFinancials(company: Company): Promise<ValueAssessment> {',
+        '    const fundamentals = await this.getFundamentalData(company);',
+        '    const insiderActivity = await this.getInsiderTransactions(company);',
+        '    const marketSentiment = this.calculateMarketSentiment();',
+        '',
+        '    return {',
+        '      intrinsicValue: this.calculateIntrinsicValue(fundamentals),',
+        '      upside: this.calculateUpside(fundamentals, company.currentPrice),',
+        '      riskAssessment: this.assessRisk(fundamentals, insiderActivity)',
+        '    };',
         '  }',
         '}'
       ]
     }
   },
   {
-    id: 'fraud-prevention',
-    title: 'Advanced Fraud Prevention',
-    description: 'Our proprietary Asset DNA™ technology creates a unique signature for each asset that makes forgery virtually impossible.',
-    icon: <ShieldCheck className="w-6 h-6 text-purple-400" />,
-    color: 'from-blue-500/20 to-purple-500/10',
-    preview: 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80',
+    id: 'quantitative-models',
+    title: 'Quantitative Models',
+    description: 'Our advanced quantitative models analyze large datasets to identify patterns and opportunities that complement our fundamental approach.',
+    icon: <Database className="w-6 h-6 text-sandgrey-600" />,
+    color: 'from-sandgrey-600/20 to-sandgrey-500/10',
+    preview: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80',
     code: {
       language: 'typescript',
-      fileName: 'asset-dna.ts',
+      fileName: 'quantitative-model.ts',
       content: [
-        '// Asset DNA Generation Algorithm',
-        'export class AssetDNA {',
-        '  generateFingerprint(asset: Asset): string {',
-        '    const dataPoints = [',
-        '      asset.metadata,',
-        '      asset.transactionHistory,',
-        '      asset.ownershipRecords',
+        '// Quantitative Analysis Engine',
+        'export class QuantitativeEngine {',
+        '  private historicalData: MarketData[];',
+        '  private machineLearningSuite: MLSuite;',
+        '',
+        '  analyzeMarketPatterns(): PatternResult[] {',
+        '    const patterns = [',
+        '      this.volatilityAnalysis(),',
+        '      this.momentumSignals(),',
+        '      this.correlationMatrix()',
         '    ];',
         '    ',
-        '    return this.hashingFunction(',
-        '      this.combineDataPoints(dataPoints)',
+        '    return this.rankBySignificance(',
+        '      this.filterValidPatterns(patterns)',
         '    );',
         '  }',
         '}'
@@ -61,66 +66,62 @@ const features = [
     }
   },
   {
-    id: 'blockchain-integration',
-    title: 'Blockchain Integration',
-    description: 'Assets are verified and recorded on multiple blockchain networks, creating an immutable record of ownership that stands up to legal scrutiny.',
-    icon: <Database className="w-6 h-6 text-purple-400" />,
-    color: 'from-purple-500/20 to-indigo-500/10',
-    preview: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80',
+    id: 'diverse-securities',
+    title: 'Diverse Securities Focus',
+    description: 'We analyze a broad range of investable securities, focusing on relatively liquid assets that offer potential for significant returns.',
+    icon: <ShieldCheck className="w-6 h-6 text-sandgrey-600" />,
+    color: 'from-sandgrey-500/20 to-sandgrey-700/10',
+    preview: 'https://images.unsplash.com/photo-1535320903710-d993d3d77d29?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80',
     code: {
-      language: 'solidity',
-      fileName: 'AssetRegistry.sol',
+      language: 'typescript',
+      fileName: 'asset-diversification.ts',
       content: [
-        '// SPDX-License-Identifier: MIT',
-        'pragma solidity ^0.8.0;',
+        '// Securities Diversification Strategy',
+        'export class DiversificationStrategy {',
+        '  private securityTypes = [',
+        '    "Equities",',
+        '    "Fixed Income",',
+        '    "Options",',
+        '    "Futures",',
+        '    "Alternative Investments"',
+        '  ];',
         '',
-        'contract AssetRegistry {',
-        '    mapping(bytes32 => Asset) private assets;',
-        '    ',
-        '    function registerAsset(',
-        '        bytes32 dnaFingerprint,',
-        '        address owner',
-        '    ) public returns (bool) {',
-        '        assets[dnaFingerprint] = Asset({',
-        '            owner: owner,',
-        '            timestamp: block.timestamp,',
-        '            verified: true',
-        '        });',
-        '        emit AssetRegistered(dnaFingerprint, owner);',
-        '        return true;',
-        '    }',
+        '  optimizePortfolio(assets: Asset[], riskTolerance: number): Portfolio {',
+        '    const allocations = this.calculateOptimalAllocations(assets, riskTolerance);',
+        '    const expectedReturn = this.calculateExpectedReturn(allocations);',
+        '    const riskProfile = this.assessRiskProfile(allocations);',
+        '',
+        '    return { allocations, expectedReturn, riskProfile };',
+        '  }',
         '}'
       ]
     }
   },
   {
-    id: 'smart-inheritance',
-    title: 'Smart Inheritance System',
-    description: 'Define rules for asset transfer that execute automatically under conditions you set, ensuring your wealth passes to the right hands.',
-    icon: <Link className="w-6 h-6 text-purple-400" />,
-    color: 'from-indigo-500/20 to-purple-500/10',
-    preview: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80',
+    id: 'market-recognition',
+    title: 'Market Recognition',
+    description: 'We generate profits when the value of our carefully selected investments is subsequently recognized by other market participants.',
+    icon: <LockIcon className="w-6 h-6 text-sandgrey-600" />,
+    color: 'from-sandgrey-700/20 to-sandgrey-500/10',
+    preview: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80',
     code: {
       language: 'typescript',
-      fileName: 'inheritance-rules.ts',
+      fileName: 'market-timing.ts',
       content: [
-        '// Smart Inheritance Rules Engine',
-        'export class InheritanceRules {',
-        '  createRule(options: {',
-        '    assets: Asset[],',
-        '    beneficiaries: Person[],',
-        '    conditions: Condition[],',
-        '    timelock?: number',
-        '  }) {',
-        '    return new SmartRule({',
-        '      ...options,',
-        '      executionTrigger: this.buildTriggerFromConditions(',
-        '        options.conditions',
-        '      ),',
-        '      verification: this.createMultiSigVerification(',
-        '        options.beneficiaries',
-        '      )',
-        '    });',
+        '// Market Recognition Timing Strategy',
+        'export class MarketTimingStrategy {',
+        '  identifyTriggerEvents(security: Security): Event[] {',
+        '    return [',
+        '      ...this.earningsReports(security),',
+        '      ...this.analystCoverageChanges(security),',
+        '      ...this.regulatoryApprovals(security),',
+        '      ...this.marketSentimentShifts(security)',
+        '    ].filter(event => this.calculateSignificance(event) > this.threshold);',
+        '  }',
+        '',
+        '  predictRecognitionWindow(events: Event[]): TimeWindow {',
+        '    const projections = events.map(e => this.projectImpact(e));',
+        '    return this.aggregateTimeframes(projections);',
         '  }',
         '}'
       ]
@@ -184,7 +185,7 @@ const cursorBlink = {
 };
 
 const InteractiveFeatures = () => {
-  const [activeFeature, setActiveFeature] = useState('secure-storage');
+  const [activeFeature, setActiveFeature] = useState('value-investing');
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -218,9 +219,9 @@ const InteractiveFeatures = () => {
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <h2 className="text-3xl md:text-4xl font-display mb-4">Enterprise-Grade Protection</h2>
+          <h2 className="text-3xl md:text-4xl font-display mb-4">Investment Philosophy</h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Arctean's security systems leverage cutting-edge technology to ensure your assets remain protected and verified for generations.
+            Kapital LLC leverages a disciplined approach to value investing combined with advanced quantitative models to deliver exceptional returns.
           </p>
         </motion.div>
         
@@ -250,7 +251,7 @@ const InteractiveFeatures = () => {
                 >
                   {activeFeature === feature.id && (
                     <motion.div 
-                      className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-blue-500/5 rounded-lg"
+                      className="absolute inset-0 bg-gradient-to-r from-sandgrey-500/10 to-sandgrey-600/5 rounded-lg"
                       layoutId="highlight"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
@@ -259,7 +260,7 @@ const InteractiveFeatures = () => {
                   )}
                   <div className="flex items-start gap-4 relative z-10">
                     <motion.div 
-                      className="w-10 h-10 bg-purple-900/30 flex items-center justify-center rounded-full flex-shrink-0"
+                      className="w-10 h-10 bg-sandgrey-800/30 flex items-center justify-center rounded-full flex-shrink-0"
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.95 }}
                     >
@@ -287,7 +288,7 @@ const InteractiveFeatures = () => {
                       className="absolute inset-0 rounded-lg"
                     >
                       <div className={`absolute inset-0 bg-gradient-to-br ${feature.color}`}></div>
-                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(138,107,246,0.15)_0%,rgba(0,0,0,0)_70%)]"></div>
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(187,187,169,0.15)_0%,rgba(0,0,0,0)_70%)]"></div>
                       
                       <div className="absolute inset-0 z-0 opacity-20">
                         <motion.img 
@@ -348,13 +349,13 @@ const InteractiveFeatures = () => {
                                     </>
                                   ) : line.includes('class') || line.includes('function') || line.includes('contract') ? (
                                     <>
-                                      <span className="text-purple-400">{line.split(' ')[0]}</span>
+                                      <span className="text-sandgrey-400">{line.split(' ')[0]}</span>
                                       <span className="text-white"> {line.split(' ').slice(1).join(' ')}</span>
                                     </>
                                   ) : line.includes('export') ? (
                                     <>
                                       <span className="text-blue-400">{line.split(' ')[0]}</span>
-                                      <span className="text-purple-400"> {line.split(' ')[1]}</span>
+                                      <span className="text-sandgrey-400"> {line.split(' ')[1]}</span>
                                       <span className="text-white"> {line.split(' ').slice(2).join(' ')}</span>
                                     </>
                                   ) : line.includes('return') ? (
@@ -390,11 +391,11 @@ const InteractiveFeatures = () => {
                           
                           <motion.div className="mt-4 flex justify-end">
                             <motion.button
-                              className="text-xs bg-purple-500/50 text-white px-3 py-1 rounded hover:bg-purple-500/80 transition-colors font-mono"
+                              className="text-xs bg-sandgrey-600/50 text-white px-3 py-1 rounded hover:bg-sandgrey-600/80 transition-colors font-mono"
                               whileHover={{ scale: 1.05 }}
                               whileTap={{ scale: 0.95 }}
                             >
-                              Execute {feature.id === 'blockchain-integration' ? 'Contract' : 'Function'}
+                              Execute Function
                             </motion.button>
                           </motion.div>
                         </motion.div>
@@ -412,4 +413,3 @@ const InteractiveFeatures = () => {
 };
 
 export default InteractiveFeatures;
-

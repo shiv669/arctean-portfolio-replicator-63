@@ -1,3 +1,4 @@
+
 import { useEffect, useRef } from 'react';
 import { LineChart, BarChart, PieChart, TrendingUp, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -92,7 +93,7 @@ const Philosophy = () => {
             whileHover={{ y: -5, transition: { duration: 0.2 } }}
           >
             <div className="w-12 h-12 bg-gray-800/30 flex items-center justify-center rounded-full mb-4 group-hover:bg-gray-800/50 transition-colors">
-              <LineChart className="w-6 h-6 text-white" />
+              <LineChart className="w-6 h-6 text-sandgrey-400" />
             </div>
             <h3 className="text-xl font-medium mb-3">Value Investing Discipline</h3>
             <p className="text-gray-400 text-sm">
@@ -106,7 +107,7 @@ const Philosophy = () => {
             whileHover={{ y: -5, transition: { duration: 0.2 } }}
           >
             <div className="w-12 h-12 bg-gray-800/30 flex items-center justify-center rounded-full mb-4 group-hover:bg-gray-800/50 transition-colors">
-              <BarChart className="w-6 h-6 text-white" />
+              <BarChart className="w-6 h-6 text-sandgrey-400" />
             </div>
             <h3 className="text-xl font-medium mb-3">Quantitative Analysis</h3>
             <p className="text-gray-400 text-sm">
@@ -120,7 +121,7 @@ const Philosophy = () => {
             whileHover={{ y: -5, transition: { duration: 0.2 } }}
           >
             <div className="w-12 h-12 bg-gray-800/30 flex items-center justify-center rounded-full mb-4 group-hover:bg-gray-800/50 transition-colors">
-              <PieChart className="w-6 h-6 text-white" />
+              <PieChart className="w-6 h-6 text-sandgrey-400" />
             </div>
             <h3 className="text-xl font-medium mb-3">Diverse Securities Focus</h3>
             <p className="text-gray-400 text-sm">
@@ -134,7 +135,7 @@ const Philosophy = () => {
             whileHover={{ y: -5, transition: { duration: 0.2 } }}
           >
             <div className="w-12 h-12 bg-gray-800/30 flex items-center justify-center rounded-full mb-4 group-hover:bg-gray-800/50 transition-colors">
-              <TrendingUp className="w-6 h-6 text-white" />
+              <TrendingUp className="w-6 h-6 text-sandgrey-400" />
             </div>
             <h3 className="text-xl font-medium mb-3">Market Recognition</h3>
             <p className="text-gray-400 text-sm">
@@ -150,7 +151,7 @@ const Philosophy = () => {
           viewport={{ once: true }}
           className="mt-16 text-center"
         >
-          <a href="#contact" className="inline-flex items-center space-x-2 border border-white/20 bg-white/5 hover:bg-white/10 px-8 py-3 rounded-md transition-colors">
+          <a href="#contact" className="inline-flex items-center space-x-2 border border-sandgrey-500/20 bg-sandgrey-600/5 hover:bg-sandgrey-600/10 px-8 py-3 rounded-md transition-colors">
             <span>Learn more about our approach</span>
             <ArrowRight className="w-4 h-4" />
           </a>

@@ -1,64 +1,64 @@
 
 import { useRef, useState } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Lock, Shield, FileText, ChevronRight } from 'lucide-react';
+import { BarChart, LineChart, TrendingUp, ChevronRight } from 'lucide-react';
 
 const features = [
   {
-    title: "Asset Registration",
-    description: "Our intuitive dashboard makes adding new assets simple. Just upload your documents, fill in basic details, and your asset is instantly protected.",
-    image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-    color: "from-purple-500/20 to-blue-500/20",
-    icon: <FileText className="w-8 h-8 text-purple-400" />,
+    title: "Value Investment Analysis",
+    description: "Our intuitive dashboard makes analyzing investments simple. Quickly review financial statements, insider purchases, and economic factors to identify undervalued assets.",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+    color: "from-sandgrey-500/20 to-sandgrey-600/20",
+    icon: <LineChart className="w-8 h-8 text-sandgrey-400" />,
     details: [
-      "Document verification",
-      "Secure encryption",
-      "Blockchain recording",
-      "Instant confirmation"
+      "Financial statement analysis",
+      "Market trend recognition",
+      "Insider activity monitoring",
+      "Economic factor assessment"
     ],
     stepsInfo: [
-      { step: "Upload Documents", description: "Securely upload any document format" },
-      { step: "Enter Asset Details", description: "Specify value, location and type" },
-      { step: "Verification", description: "Our AI verifies authenticity" },
-      { step: "Confirmation", description: "Asset is registered and protected" }
+      { step: "Financial Review", description: "Analyze financial statements & ratios" },
+      { step: "Determine Value", description: "Calculate intrinsic value" },
+      { step: "Compare to Market", description: "Identify price to value discrepancies" },
+      { step: "Investment Decision", description: "Execute based on value metrics" }
     ]
   },
   {
-    title: "Wealth Distribution Planning",
-    description: "Our visual inheritance planner allows you to drag and drop assets to beneficiaries, set conditions, and see exactly how your wealth will be distributed.",
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-    color: "from-blue-500/20 to-purple-500/20",
-    icon: <Shield className="w-8 h-8 text-blue-400" />,
+    title: "Quantitative Modeling",
+    description: "Our advanced quantitative models analyze large datasets to identify patterns and opportunities that complement our fundamental value investing approach.",
+    image: "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+    color: "from-sandgrey-600/20 to-sandgrey-500/20",
+    icon: <TrendingUp className="w-8 h-8 text-sandgrey-400" />,
     details: [
-      "Visual distribution planner",
-      "Conditional inheritance rules",
-      "Auto-executing transfers",
-      "Real-time simulations"
+      "Pattern recognition algorithms",
+      "Data-driven insights",
+      "Market anomaly detection",
+      "Risk-adjusted returns optimization"
     ],
     stepsInfo: [
-      { step: "Select Assets", description: "Choose which assets to distribute" },
-      { step: "Assign Beneficiaries", description: "Drag & drop to assign assets" },
-      { step: "Set Conditions", description: "Add time or event-based conditions" },
-      { step: "Review & Finalize", description: "Visualize the complete plan" }
+      { step: "Data Collection", description: "Gather market & economic data" },
+      { step: "Model Processing", description: "Run proprietary algorithms" },
+      { step: "Signal Generation", description: "Identify statistical opportunities" },
+      { step: "Integration", description: "Combine with value approach" }
     ]
   },
   {
-    title: "Beneficiary Management",
-    description: "Keep your loved ones informed with customizable notifications. They'll receive only the information you want them to have, exactly when you want them to have it.",
-    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-    color: "from-indigo-500/20 to-pink-500/20",
-    icon: <Lock className="w-8 h-8 text-indigo-400" />,
+    title: "Portfolio Optimization",
+    description: "Our sophisticated portfolio construction methodology optimizes asset allocation to maximize returns while adhering to your risk tolerance and investment parameters.",
+    image: "https://images.unsplash.com/photo-1543286386-713bdd548da4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+    color: "from-sandgrey-500/20 to-sandgrey-700/20",
+    icon: <BarChart className="w-8 h-8 text-sandgrey-400" />,
     details: [
-      "Customizable permissions",
-      "Timed notifications",
-      "Secure access controls",
-      "Multi-signature verification"
+      "Risk-return optimization",
+      "Correlation analysis",
+      "Liquidity management",
+      "Diversification strategy"
     ],
     stepsInfo: [
-      { step: "Add Beneficiaries", description: "Enter contact details securely" },
-      { step: "Set Access Levels", description: "Control what each person can view" },
-      { step: "Schedule Notifications", description: "Set time or event triggers" },
-      { step: "Manage Permissions", description: "Update access anytime" }
+      { step: "Risk Assessment", description: "Determine optimal risk exposure" },
+      { step: "Asset Selection", description: "Choose securities based on analysis" },
+      { step: "Weight Allocation", description: "Set position sizes by opportunity" },
+      { step: "Rebalance", description: "Monitor and adjust as needed" }
     ]
   }
 ];
@@ -162,7 +162,7 @@ const ParallaxFeatures = () => {
       <motion.div
         className="absolute inset-0 z-0"
         style={{
-          background: "radial-gradient(circle at 50% 50%, rgba(138, 107, 246, 0.15) 0%, rgba(0, 0, 0, 0) 50%)"
+          background: "radial-gradient(circle at 50% 50%, rgba(187, 187, 169, 0.15) 0%, rgba(0, 0, 0, 0) 50%)"
         }}
         animate={{
           opacity: [0.3, 0.5, 0.3],
@@ -179,7 +179,7 @@ const ParallaxFeatures = () => {
         {[...Array(15)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 rounded-full bg-purple-500/30"
+            className="absolute w-1 h-1 rounded-full bg-sandgrey-500/30"
             style={{
               top: `${Math.random() * 100}%`,
               left: `${Math.random() * 100}%`,
@@ -206,16 +206,16 @@ const ParallaxFeatures = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-display mb-4">Experience Seamless Security</h2>
+          <h2 className="text-3xl md:text-4xl font-display mb-4">Intelligent Investment Process</h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Arctean combines cutting-edge technology with intuitive design to provide you with a seamless asset protection experience.
+            Kapital LLC combines fundamental value analysis with quantitative models to deliver exceptional returns for our investors.
           </p>
         </motion.div>
         
         <div ref={containerRef} className="relative">
           {/* Feature Tabs */}
           <motion.div 
-            className="flex items-center justify-center mb-10 overflow-x-auto pb-4 gap-4 md:gap-6"
+            className="flex flex-wrap items-center justify-center mb-10 overflow-x-auto pb-4 gap-4 md:gap-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -226,7 +226,7 @@ const ParallaxFeatures = () => {
                 key={index}
                 className={`px-4 py-2 rounded-full flex items-center gap-2 transition-all ${
                   activeFeature === index
-                    ? "bg-purple-500/20 text-white border border-purple-500/40"
+                    ? "bg-sandgrey-500/20 text-white border border-sandgrey-500/40"
                     : "bg-black/30 text-gray-400 border border-gray-800 hover:border-gray-700"
                 }`}
                 onClick={() => setActiveFeature(index)}
@@ -239,9 +239,16 @@ const ParallaxFeatures = () => {
             ))}
           </motion.div>
         
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-6">
             {features.map((feature, index) => (
-              <div key={index} className={`relative p-6 ${activeFeature === index ? 'order-first md:col-span-2' : 'md:col-span-1'}`}>
+              <div 
+                key={index} 
+                className={`relative p-6 ${
+                  activeFeature === index 
+                    ? 'order-first md:col-span-8' 
+                    : 'md:col-span-4'
+                }`}
+              >
                 <motion.div 
                   style={{ 
                     y: index === 0 ? y1 : index === 1 ? y2 : y3,
@@ -285,9 +292,9 @@ const ParallaxFeatures = () => {
                       <span className="text-base font-medium text-white">{feature.title}</span>
                       <button 
                         onClick={() => toggleInfo(index)} 
-                        className="mt-2 text-xs text-purple-400 hover:text-purple-300 transition-colors flex items-center gap-1"
+                        className="mt-2 text-xs text-sandgrey-400 hover:text-sandgrey-300 transition-colors flex items-center gap-1"
                       >
-                        Learn more <ExternalLink className="w-3 h-3" />
+                        Learn more <ChevronRight className="w-3 h-3" />
                       </button>
                     </div>
                   </motion.div>
@@ -306,7 +313,7 @@ const ParallaxFeatures = () => {
                           cy="50%"
                           r="30"
                           fill="none"
-                          stroke="rgba(139, 92, 246, 0.3)"
+                          stroke="rgba(187, 187, 169, 0.3)"
                           strokeWidth="1"
                           initial={{ r: 10, opacity: 0 }}
                           animate={{ 
@@ -324,7 +331,7 @@ const ParallaxFeatures = () => {
                           cy="50%"
                           r="20"
                           fill="none"
-                          stroke="rgba(59, 130, 246, 0.3)"
+                          stroke="rgba(163, 163, 148, 0.3)"
                           strokeWidth="1"
                           initial={{ r: 10, opacity: 0 }}
                           animate={{ 
@@ -346,7 +353,7 @@ const ParallaxFeatures = () => {
                   <svg className="absolute inset-0 w-full h-full z-[5] pointer-events-none opacity-40 group-hover:opacity-80 transition-opacity duration-500">
                     <motion.path 
                       d={`M 0 ${Math.random() * 50 + 50} Q ${Math.random() * 200 + 100} ${Math.random() * 100} ${Math.random() * 200 + 200} ${Math.random() * 50 + 50}`}
-                      stroke="rgba(139, 92, 246, 0.5)"
+                      stroke="rgba(187, 187, 169, 0.5)"
                       strokeWidth="1"
                       fill="none"
                       initial={{ pathLength: 0, opacity: 0 }}
@@ -355,7 +362,7 @@ const ParallaxFeatures = () => {
                     />
                     <motion.path 
                       d={`M ${Math.random() * 100 + 200} 0 Q ${Math.random() * 200 + 100} ${Math.random() * 100 + 50} ${Math.random() * 100} ${Math.random() * 50 + 100}`}
-                      stroke="rgba(59, 130, 246, 0.5)"
+                      stroke="rgba(163, 163, 148, 0.5)"
                       strokeWidth="1"
                       fill="none"
                       initial={{ pathLength: 0, opacity: 0 }}
@@ -388,7 +395,7 @@ const ParallaxFeatures = () => {
                         transition={{ delay: 0.1 * i, duration: 0.3 }}
                         viewport={{ once: true }}
                       >
-                        <div className="w-1.5 h-1.5 rounded-full bg-purple-500"></div>
+                        <div className="w-1.5 h-1.5 rounded-full bg-sandgrey-500"></div>
                         {detail}
                       </motion.li>
                     ))}
@@ -396,7 +403,7 @@ const ParallaxFeatures = () => {
                   
                   {activeFeature === index && !showSteps && (
                     <motion.button
-                      className="mt-6 bg-gradient-to-r from-purple-600 to-blue-600 px-4 py-2 rounded-md text-white flex items-center gap-2 hover:opacity-90 transition-opacity"
+                      className="mt-6 bg-gradient-to-r from-sandgrey-600 to-sandgrey-700 px-4 py-2 rounded-md text-white flex items-center gap-2 hover:opacity-90 transition-opacity"
                       whileHover={{ scale: 1.03 }}
                       whileTap={{ scale: 0.98 }}
                       onClick={handleShowSteps}
@@ -408,7 +415,7 @@ const ParallaxFeatures = () => {
                   {/* Steps visualization for active feature */}
                   {activeFeature === index && showSteps && (
                     <motion.div 
-                      className="mt-8 bg-black/50 backdrop-blur-sm border border-purple-500/20 rounded-lg p-6"
+                      className="mt-8 bg-black/50 backdrop-blur-sm border border-sandgrey-500/20 rounded-lg p-6"
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5 }}
@@ -417,7 +424,7 @@ const ParallaxFeatures = () => {
                       
                       <div className="relative">
                         {/* Connection line */}
-                        <div className="absolute left-[18px] top-6 bottom-0 w-[2px] bg-gradient-to-b from-purple-500/80 to-blue-500/30"></div>
+                        <div className="absolute left-[18px] top-6 bottom-0 w-[2px] bg-gradient-to-b from-sandgrey-500/80 to-sandgrey-600/30"></div>
                         
                         {/* Steps */}
                         <div className="space-y-6">
@@ -431,7 +438,7 @@ const ParallaxFeatures = () => {
                               animate="visible"
                             >
                               <motion.div 
-                                className="w-9 h-9 rounded-full bg-gradient-to-br from-purple-500 to-blue-600 flex items-center justify-center text-white font-medium text-sm z-10"
+                                className="w-9 h-9 rounded-full bg-gradient-to-br from-sandgrey-500 to-sandgrey-700 flex items-center justify-center text-white font-medium text-sm z-10"
                                 whileHover={{ scale: 1.1 }}
                                 whileTap={{ scale: 0.95 }}
                               >
@@ -454,7 +461,7 @@ const ParallaxFeatures = () => {
                                     }}
                                   >
                                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                                      <path d="M5 10L0.669872 0.5L9.33013 0.5L5 10Z" fill="rgba(139, 92, 246, 0.5)" />
+                                      <path d="M5 10L0.669872 0.5L9.33013 0.5L5 10Z" fill="rgba(187, 187, 169, 0.5)" />
                                     </svg>
                                   </motion.div>
                                 )}
@@ -482,7 +489,7 @@ const ParallaxFeatures = () => {
                 </motion.div>
                 
                 <motion.div 
-                  className="w-full h-[1px] bg-gradient-to-r from-transparent via-purple-500/30 to-transparent mt-6"
+                  className="w-full h-[1px] bg-gradient-to-r from-transparent via-sandgrey-500/30 to-transparent mt-6"
                   initial={{ scaleX: 0 }}
                   whileInView={{ scaleX: 1 }}
                   transition={{ duration: 1.5, delay: 0.2 }}
@@ -493,7 +500,7 @@ const ParallaxFeatures = () => {
                 <AnimatePresence>
                   {expandedInfoIndex === index && (
                     <motion.div
-                      className="absolute top-full left-0 right-0 mt-4 bg-black/80 backdrop-blur-md border border-purple-500/20 rounded-lg p-4 z-50 shadow-xl"
+                      className="absolute top-full left-0 right-0 mt-4 bg-black/80 backdrop-blur-md border border-sandgrey-500/20 rounded-lg p-4 z-50 shadow-xl"
                       variants={infoPanelAnimation}
                       initial="hidden"
                       animate="visible"
@@ -515,7 +522,7 @@ const ParallaxFeatures = () => {
                           <motion.div 
                             className="h-8 w-2/3 rounded"
                             style={{
-                              background: "linear-gradient(90deg, rgba(139, 92, 246, 0.3), rgba(59, 130, 246, 0.1))"
+                              background: "linear-gradient(90deg, rgba(187, 187, 169, 0.3), rgba(163, 163, 148, 0.1))"
                             }}
                             animate={{
                               backgroundPosition: ["0% 0%", "100% 0%"],
@@ -529,8 +536,8 @@ const ParallaxFeatures = () => {
                         </div>
                         
                         <p className="text-sm text-gray-300">
-                          Arctean's {feature.title.toLowerCase()} system uses advanced blockchain technology 
-                          and military-grade encryption to ensure your assets remain protected.
+                          Kapital LLC's {feature.title.toLowerCase()} system leverages advanced analytics 
+                          and proprietary methodologies to identify exceptional investment opportunities.
                         </p>
                         
                         <div className="grid grid-cols-2 gap-2 mt-2">
@@ -549,11 +556,11 @@ const ParallaxFeatures = () => {
                         
                         <div className="mt-3 text-right">
                           <motion.button
-                            className="text-xs bg-purple-500/20 hover:bg-purple-500/30 text-purple-300 px-3 py-1 rounded transition-colors"
+                            className="text-xs bg-sandgrey-500/20 hover:bg-sandgrey-500/30 text-sandgrey-300 px-3 py-1 rounded transition-colors"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                           >
-                            Try it now
+                            Learn more
                           </motion.button>
                         </div>
                       </div>
@@ -568,7 +575,7 @@ const ParallaxFeatures = () => {
           <motion.div
             className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-64 h-64 rounded-full"
             style={{
-              background: "radial-gradient(circle at center, rgba(139, 92, 246, 0.15), rgba(0, 0, 0, 0) 70%)"
+              background: "radial-gradient(circle at center, rgba(187, 187, 169, 0.15), rgba(0, 0, 0, 0) 70%)"
             }}
             animate={{
               scale: [1, 1.2, 1],
@@ -579,24 +586,6 @@ const ParallaxFeatures = () => {
               repeatType: "mirror",
             }}
           />
-          
-          {/* Connection lines between features */}
-          <div className="absolute inset-0 pointer-events-none">
-            <svg className="w-full h-full">
-              {hoveredFeature !== null && (
-                <motion.path
-                  d={`M ${features.map((_, i) => i === hoveredFeature ? 1 : 0).join(' ')} Z`}
-                  stroke="rgba(139, 92, 246, 0.3)"
-                  strokeWidth="1"
-                  fill="none"
-                  strokeDasharray="5,5"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                />
-              )}
-            </svg>
-          </div>
         </div>
       </div>
     </section>

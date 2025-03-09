@@ -69,7 +69,7 @@ const Hero = () => {
     }
   };
   
-  // Split text into words for animation
+  // Split text into words for animation with proper spacing
   const headingText = "Valuable Insights, Intelligent Investments™";
   const words = headingText.split(" ");
   
@@ -88,6 +88,10 @@ const Hero = () => {
         animate="animate"
       ></motion.div>
       
+      {/* Sand grey glow behind the heading */}
+      <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/3 w-[700px] h-[200px] rounded-full bg-sandgrey-500/10 blur-[100px]"></div>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[180px] rounded-full bg-sandgrey-400/5 blur-[80px]"></div>
+      
       <div className="absolute top-1/4 -left-20 w-60 h-60 bg-gray-500/10 rounded-full blur-[100px]"></div>
       <div className="absolute bottom-1/4 -right-20 w-60 h-60 bg-gray-500/10 rounded-full blur-[100px]"></div>
       
@@ -104,8 +108,9 @@ const Hero = () => {
                 key={i} 
                 variants={wordVariants}
                 className="inline-block"
+                style={{ marginRight: i !== words.length - 1 ? '0.3em' : '0' }} // Add space between words
               >
-                {word}{i !== words.length - 1 ? ' ' : ''}
+                {word}
               </motion.span>
             ))}
           </motion.h1>

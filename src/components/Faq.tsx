@@ -5,28 +5,28 @@ import { cn } from '@/lib/utils';
 
 const faqItems = [
   {
-    question: "What types of assets can I protect with Arctean?",
-    answer: "Arctean supports virtually any asset type—physical or digital. This includes real estate (land, homes, commercial property), vehicles, business ownership, financial assets (stocks, bonds, bank accounts), digital assets (cryptocurrency, NFTs), collectibles, insurance policies, and intellectual property. Our platform is designed to be comprehensive."
+    question: "What is Kapital LLC's investment approach?",
+    answer: "Kapital LLC employs a value investing approach aided by advanced quantitative models. We conduct thorough fundamental analysis of financial statements and other observable information to identify undervalued securities. Our goal is to generate returns when these securities' true value is recognized by the market."
   },
   {
-    question: "How does Arctean verify ownership of my assets?",
-    answer: "Our proprietary Asset DNA™ technology uses multiple verification methods including document analysis, blockchain validation for digital assets, historical transaction verification, and metadata comparison. This multi-layered approach creates a fraud-proof verification system that doesn't rely on external government APIs."
+    question: "What types of securities does S Fund, LP invest in?",
+    answer: "S Fund, LP invests in a broad range of relatively liquid securities. We primarily focus on equities (stocks), fixed income instruments, and special situations where we identify significant value opportunities. Our approach is to maintain a diversified portfolio while capitalizing on our highest-conviction ideas."
   },
   {
-    question: "Can I specify different inheritance rules for different assets?",
-    answer: "Absolutely. Arctean allows you to create custom inheritance rules for each asset. You can distribute percentages of ownership to multiple heirs, set up time-based transfers (e.g., when your child turns 25), create milestone-based transfers (e.g., upon graduation), or establish conditional transfers based on specific events."
+    question: "What is the minimum investment for S Fund, LP?",
+    answer: "Investment minimums and requirements are provided upon direct inquiry. We carefully select our limited partners and maintain appropriate investment minimums to ensure that our fund structure aligns with the goals of our investors. Please contact us directly for detailed information."
   },
   {
-    question: "Is Arctean legally binding for inheritance purposes?",
-    answer: "While Arctean creates a comprehensive digital record of your assets and intentions, we recommend complementing our service with standard legal documents like wills and trusts. Arctean significantly simplifies the legal process by providing clear documentation and preventing disputes over ownership or asset existence."
+    question: "How is performance measured and reported?",
+    answer: "Kapital LLC provides regular, transparent reporting to all limited partners. Our performance is measured against appropriate benchmarks, and we provide detailed analysis of investment activities, portfolio composition, and realized/unrealized gains. Reports are distributed according to the schedule outlined in our limited partnership agreement."
   },
   {
-    question: "How secure is the Arctean platform?",
-    answer: "Arctean employs military-grade encryption, decentralized storage, multi-factor authentication, and regular security audits. Each asset record is backed by blockchain technology for immutability. We never store complete asset information in a single location, making the system highly resistant to breaches or unauthorized access."
+    question: "What is the fund's fee structure?",
+    answer: "Our fee structure follows industry standards for investment partnerships with a management fee and performance-based incentive fee. The specific terms are detailed in our offering documents and vary based on investment class and commitment amount. Contact us directly for detailed information."
   },
   {
-    question: "What happens if I need to update my asset information or beneficiaries?",
-    answer: "You can update your asset information or beneficiary details at any time through your secure Arctean dashboard. The system maintains a complete history of changes for transparency while ensuring that only your latest instructions are implemented. All changes are securely logged with timestamps and verification."
+    question: "How does Kapital LLC manage risk?",
+    answer: "Risk management is integral to our investment process. We employ diversification across securities and sectors, position sizing based on conviction and risk, ongoing monitoring of market conditions, and stress testing of our portfolio against various scenarios. Our quantitative models also help identify and mitigate potential risks."
   }
 ];
 
@@ -143,10 +143,10 @@ const Faq = () => {
           
           <div className="max-w-lg">
             <p className="text-sm text-gray-400 mb-6">
-              Need more information about how Arctean can secure and transfer your generational wealth? Here are answers to our most commonly asked questions.
+              Have questions about our investment approach or partnership opportunities? Here are answers to commonly asked questions about Kapital LLC and S Fund, LP.
             </p>
             <a href="#contact" className="text-sm underline underline-offset-4 text-gray-400 hover:text-white transition-colors">
-              Contact us for personalized wealth security solutions
+              Contact us for more detailed information about our investment strategies
             </a>
           </div>
         </div>

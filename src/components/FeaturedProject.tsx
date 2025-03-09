@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 
-const FeaturedProject = () => {
+const FeaturedApproach = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const [isHovered, setIsHovered] = useState(false);
   
@@ -81,7 +81,7 @@ const FeaturedProject = () => {
           onHoverEnd={() => setIsHovered(false)}
         >
           <motion.div 
-            className="absolute -inset-0.5 bg-gradient-to-r from-purple-500/20 via-blue-500/20 to-purple-500/20 rounded-xl blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+            className="absolute -inset-0.5 bg-gradient-to-r from-gray-500/20 via-gray-500/20 to-gray-500/20 rounded-xl blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500"
             variants={borderVariants}
             initial="initial"
             animate="animate"
@@ -92,7 +92,7 @@ const FeaturedProject = () => {
             {isHovered && particles.map(particle => (
               <motion.div
                 key={particle.id}
-                className="absolute w-1 h-1 rounded-full bg-purple-500/60 z-10 pointer-events-none"
+                className="absolute w-1 h-1 rounded-full bg-gray-500/60 z-10 pointer-events-none"
                 initial={{ 
                   x: `${particle.x}%`, 
                   y: `${particle.y}%`,
@@ -127,13 +127,13 @@ const FeaturedProject = () => {
                     transition={{ duration: 0.5 }}
                     viewport={{ once: true }}
                   >
-                    <span className="text-xs text-purple-500">Key Feature</span>
+                    <span className="text-xs text-gray-400">Our Process</span>
                     <h3 className="text-xl md:text-3xl font-display mt-1">
-                      Asset DNA™ Technology
+                      Quantitative Value Analysis
                     </h3>
                     <span className="text-xs text-gray-400">by</span>
                     <span className="text-xs ml-1">
-                      Arctean Security Labs
+                      Kapital LLC Research Team
                     </span>
                   </motion.div>
                 </div>
@@ -149,7 +149,7 @@ const FeaturedProject = () => {
                       viewport={{ once: true }}
                       whileHover={{ x: 3 }}
                     >
-                      <span>Learn how it works</span>
+                      <span>Explore our methodology</span>
                       <ArrowRight className="h-3 w-3" />
                     </motion.a>
                   </div>
@@ -164,12 +164,12 @@ const FeaturedProject = () => {
                     viewport={{ once: true }}
                   >
                     <img 
-                      src="https://images.unsplash.com/photo-1556742208-999815fca738?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" 
-                      alt="Asset DNA Technology" 
+                      src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" 
+                      alt="Quantitative Value Analysis" 
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                     />
                     
-                    {/* Visual DNA strand animation */}
+                    {/* Visual data analysis animation */}
                     <motion.div 
                       className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black pointer-events-none"
                       animate={{
@@ -193,7 +193,7 @@ const FeaturedProject = () => {
                         {[...Array(10)].map((_, i) => (
                           <motion.div
                             key={i}
-                            className="absolute w-6 h-6 rounded-full bg-purple-500/30 backdrop-blur-sm"
+                            className="absolute w-6 h-6 rounded-full bg-gray-500/30 backdrop-blur-sm"
                             initial={{ 
                               x: i % 2 === 0 ? '0%' : '100%', 
                               y: `${i * 10}%`,
@@ -221,7 +221,7 @@ const FeaturedProject = () => {
                         {[...Array(9)].map((_, i) => (
                           <motion.div
                             key={`line-${i}`}
-                            className="absolute h-0.5 bg-gradient-to-r from-purple-500/30 to-blue-500/30"
+                            className="absolute h-0.5 bg-gradient-to-r from-gray-500/30 to-gray-300/30"
                             style={{
                               top: `${i * 10 + 5}%`,
                               left: '0',
@@ -252,7 +252,7 @@ const FeaturedProject = () => {
                     whileInView="visible"
                     viewport={{ once: true }}
                   >
-                    Our revolutionary Asset DNA™ technology creates a unique digital fingerprint for each of your assets by analyzing multiple data points including metadata, transaction history, and ownership records. This ensures that your assets cannot be fraudulently claimed or transferred without authorization.
+                    Our proprietary Quantitative Value Analysis combines traditional value investing principles with advanced data analytics. We analyze financial statements, insider transactions, competitive positioning, and market sentiment to identify companies with strong intrinsic value that may be temporarily underpriced by the market.
                   </motion.p>
                 </div>
               </div>
@@ -264,4 +264,4 @@ const FeaturedProject = () => {
   );
 };
 
-export default FeaturedProject;
+export default FeaturedApproach;

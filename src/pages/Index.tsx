@@ -2,10 +2,10 @@
 import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import WhyArctean from "@/components/WhyArctean";
-import AssetVault from "@/components/AssetVault";
-import Audience from "@/components/Audience";
-import FeaturedProject from "@/components/FeaturedProject";
+import AboutUs from "@/components/WhyArctean";
+import Philosophy from "@/components/AssetVault";
+import InvestmentStrategies from "@/components/Audience";
+import FeaturedApproach from "@/components/FeaturedProject";
 import Faq from "@/components/Faq";
 import Footer from "@/components/Footer";
 import InteractiveFeatures from "@/components/InteractiveFeatures";
@@ -45,14 +45,14 @@ const Index = () => {
     <div className="min-h-screen bg-black text-white">
       <Navbar />
       <Hero />
-      <WhyArctean />
-      <AssetVault />
+      <AboutUs />
+      <Philosophy />
       <InteractiveFeatures />
       <ParallaxFeatures />
       <MetricsSection />
-      <Audience />
+      <InvestmentStrategies />
       <TestimonialsSlider />
-      <FeaturedProject />
+      <FeaturedApproach />
       <Faq />
       <Footer />
     </div>

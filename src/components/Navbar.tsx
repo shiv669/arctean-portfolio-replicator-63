@@ -25,22 +25,23 @@ const Navbar = () => {
       scrolled ? "bg-black/80 backdrop-blur-md border-b border-white/5" : "bg-transparent"
     )}>
       <div className="container-custom flex items-center justify-between py-4">
-        <a href="/" className="text-lg font-display font-bold tracking-tight">
-          Arctean
+        <a href="/" className="flex items-center text-lg font-display font-bold tracking-tight">
+          <span className="bg-black text-white px-1 py-0.5">KAPITAL</span>
+          <span className="ml-1">LLC</span>
         </a>
         
         <div className="hidden md:flex items-center space-x-6">
           <nav className="flex space-x-6 text-xs text-gray-400">
-            <a href="#features" className="hover:text-white transition-colors">FEATURES</a>
-            <a href="#solutions" className="hover:text-white transition-colors">SOLUTIONS</a>
-            <a href="#about" className="hover:text-white transition-colors">ABOUT</a>
-            <a href="#faq" className="hover:text-white transition-colors">FAQ</a>
+            <a href="#about" className="hover:text-white transition-colors">ABOUT US</a>
+            <a href="#philosophy" className="hover:text-white transition-colors">PHILOSOPHY</a>
+            <a href="#investment" className="hover:text-white transition-colors">INVESTMENTS</a>
+            <a href="#disclaimer" className="hover:text-white transition-colors">DISCLAIMERS</a>
           </nav>
           <a 
             href="#contact" 
             className="text-xs uppercase font-medium border-b border-white/40 hover:border-white transition-colors"
           >
-            Secure Your Legacy
+            Investment Inquiries
           </a>
         </div>
       </div>

@@ -69,8 +69,8 @@ const Hero = () => {
     }
   };
   
-  // Split text into words for animation - fixed spacing issues
-  const headingText = "Secure Your Legacy with Digital Vault Technology";
+  // Split text into words for animation
+  const headingText = "Valuable Insights, Intelligent Investments™";
   const words = headingText.split(" ");
   
   return (
@@ -82,14 +82,14 @@ const Hero = () => {
     >
       {/* Animated background elements */}
       <motion.div 
-        className="absolute inset-0 bg-gradient-to-r from-black via-purple-900/10 to-black bg-[length:400%_400%]"
+        className="absolute inset-0 bg-gradient-to-r from-black via-gray-900/10 to-black bg-[length:400%_400%]"
         variants={gradientVariants}
         initial="initial"
         animate="animate"
       ></motion.div>
       
-      <div className="absolute top-1/4 -left-20 w-60 h-60 bg-purple-500/10 rounded-full blur-[100px]"></div>
-      <div className="absolute bottom-1/4 -right-20 w-60 h-60 bg-blue-500/10 rounded-full blur-[100px]"></div>
+      <div className="absolute top-1/4 -left-20 w-60 h-60 bg-gray-500/10 rounded-full blur-[100px]"></div>
+      <div className="absolute bottom-1/4 -right-20 w-60 h-60 bg-gray-500/10 rounded-full blur-[100px]"></div>
       
       <div className="container-custom relative z-10">
         <div className="max-w-4xl">
@@ -142,7 +142,7 @@ const Hero = () => {
               animate={{ opacity: 0.7, x: 0 }}
               transition={{ delay: 1.8, duration: 0.5 }}
             >
-              Our capabilities
+              Investment Approach
             </motion.p>
           </div>
           <div className="col-span-3 md:col-span-1 flex items-center justify-center">
@@ -170,8 +170,8 @@ const Hero = () => {
                 whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
               >
                 <img 
-                  src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" 
-                  alt="Asset Security" 
+                  src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" 
+                  alt="Value Investing" 
                   className="h-full w-full object-cover opacity-80 hover:opacity-100 transition-opacity"
                 />
               </motion.div>
@@ -184,8 +184,8 @@ const Hero = () => {
                 whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
               >
                 <img 
-                  src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" 
-                  alt="Digital Legacy" 
+                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" 
+                  alt="Quantitative Models" 
                   className="h-full w-full object-cover opacity-80 hover:opacity-100 transition-opacity"
                 />
               </motion.div>
@@ -198,8 +198,8 @@ const Hero = () => {
                 whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
               >
                 <img 
-                  src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" 
-                  alt="Wealth Transfer" 
+                  src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" 
+                  alt="Investment Partnerships" 
                   className="h-full w-full object-cover opacity-80 hover:opacity-100 transition-opacity"
                 />
               </motion.div>
@@ -207,13 +207,13 @@ const Hero = () => {
           </div>
           <div className="col-span-3 md:col-span-1 flex md:justify-end items-center">
             <motion.button 
-              className="flex items-center space-x-2 text-sm hover:text-purple-500 transition-colors group"
+              className="flex items-center space-x-2 text-sm hover:text-gray-400 transition-colors group"
               initial={{ opacity: 0, x: 10 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 2, duration: 0.5 }}
               whileHover={{ x: 5 }}
             >
-              <span>Explore features</span>
+              <span>Learn about our approach</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </motion.button>
           </div>
@@ -221,7 +221,7 @@ const Hero = () => {
       </div>
       
       <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black/20 to-transparent"></div>
-      <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,rgba(138,107,246,0.15)_0%,rgba(0,0,0,0)_50%)]"></div>
+      <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,rgba(100,100,100,0.15)_0%,rgba(0,0,0,0)_50%)]"></div>
     </motion.section>
   );
 };

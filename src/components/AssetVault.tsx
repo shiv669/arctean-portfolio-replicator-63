@@ -1,6 +1,5 @@
-
 import { useEffect, useRef } from 'react';
-import { LineChart, BarChart, PieChart, TrendingUp } from 'lucide-react';
+import { LineChart, BarChart, PieChart, TrendingUp, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Philosophy = () => {

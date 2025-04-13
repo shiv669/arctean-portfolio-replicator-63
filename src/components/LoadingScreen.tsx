@@ -22,10 +22,11 @@ const LoadingScreen = ({ isLoading }: LoadingScreenProps) => {
     ];
     
     let currentIndex = 0;
+    // Fast animation (100ms) for a snappy loading effect
     const interval = setInterval(() => {
       currentIndex = (currentIndex + 1) % states.length;
       setLoadingState(states[currentIndex]);
-    }, 150); // Fast and snappy
+    }, 100);
     
     return () => clearInterval(interval);
   }, [isLoading]);
@@ -46,7 +47,7 @@ const LoadingScreen = ({ isLoading }: LoadingScreenProps) => {
             className="text-center"
           >
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">Arctean</h1>
-            <p className="text-lg text-gray-300 font-mono">{loadingState}</p>
+            <p className="text-lg text-gray-300 font-mono tracking-widest">{loadingState}</p>
           </motion.div>
         </motion.div>
       )}

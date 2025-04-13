@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Spline from '@splinetool/react-spline';
 
 interface SplineSceneProps {
@@ -17,6 +17,14 @@ const SplineScene = ({
     setLoading(false);
     if (onLoad) onLoad();
   };
+
+  // Cleanup function to help with memory issues
+  useEffect(() => {
+    return () => {
+      // Force garbage collection when component unmounts
+      window.gc && window.gc();
+    };
+  }, []);
 
   return (
     <div className="absolute inset-0 -z-10">

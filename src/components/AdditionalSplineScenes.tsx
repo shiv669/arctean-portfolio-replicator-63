@@ -21,8 +21,7 @@ export const SplineScene3 = () => (
 export const SplineScene4 = () => (
   <SectionSplineScene 
     scene="https://prod.spline.design/dRFjVC8yrZFMSfGg/scene.splinecode"
-    width={1200}
-    height={1200}
+    className="relative min-h-[600px]"
   />
 );
 
@@ -44,4 +43,11 @@ export const SplineScene6 = () => (
       </div>
     </div>
   </div>
+);
+
+export const SplineScene7 = () => (
+  <SectionSplineScene 
+    scene="https://prod.spline.design/1LPGwPo7iz9qGz4W/scene.splinecode"
+    className="relative min-h-[500px]"
+  />
 );

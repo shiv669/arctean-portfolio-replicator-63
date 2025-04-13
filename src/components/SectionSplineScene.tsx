@@ -16,11 +16,10 @@ const SectionSplineScene = ({
   height
 }: SectionSplineSceneProps) => {
   return (
-    <div className={className}>
+    <div className={className} style={{ width: width ? `${width}px` : '100%', height: height ? `${height}px` : '100%' }}>
       <Spline 
         scene={scene}
-        width={width}
-        height={height}
+        style={{ width: '100%', height: '100%' }}
       />
     </div>
   );

@@ -1,5 +1,5 @@
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Spline from '@splinetool/react-spline';
 
 interface SplineSceneProps {

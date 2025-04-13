@@ -80,7 +80,7 @@ const MetricsSection = () => {
         >
           <h2 className="text-3xl md:text-4xl font-display mb-4">Performance Highlights</h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Kapital LLC consistently delivers exceptional results through disciplined value investing and quantitative analysis.
+            Arctean consistently delivers exceptional results through disciplined value investing and quantitative analysis.
           </p>
         </motion.div>
         

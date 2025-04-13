@@ -22,11 +22,11 @@ const LoadingScreen = ({ isLoading }: LoadingScreenProps) => {
     ];
     
     let currentIndex = 0;
-    // Fast animation (100ms) for a snappy loading effect
+    // Very fast animation (80ms) for an extra snappy loading effect
     const interval = setInterval(() => {
       currentIndex = (currentIndex + 1) % states.length;
       setLoadingState(states[currentIndex]);
-    }, 100);
+    }, 80);
     
     return () => clearInterval(interval);
   }, [isLoading]);

@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { LockIcon, ShieldCheck, Database, TrendingUp } from 'lucide-react';
@@ -129,7 +128,6 @@ const features = [
   }
 ];
 
-// Animation variants
 const containerAnimation = {
   hidden: { opacity: 0 },
   visible: {
@@ -196,7 +194,6 @@ const InteractiveFeatures = () => {
   const scale = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.95, 1, 1, 0.95]);
   const y = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [30, 0, 0, 30]);
   
-  // Auto-cycle through features
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveFeature(current => {
@@ -221,7 +218,7 @@ const InteractiveFeatures = () => {
         >
           <h2 className="text-3xl md:text-4xl font-display mb-4">Investment Philosophy</h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Kapital LLC leverages a disciplined approach to value investing combined with advanced quantitative models to deliver exceptional returns.
+            Arctean leverages a disciplined approach to value investing combined with advanced quantitative models to deliver exceptional returns.
           </p>
         </motion.div>
         

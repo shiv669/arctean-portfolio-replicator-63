@@ -30,12 +30,14 @@ const MainIndex = () => {
   const [loading, setLoading] = useState(true);
   const [mainSceneLoaded, setMainSceneLoaded] = useState(false);
   const [renderSections, setRenderSections] = useState(false);
+  const [loadingTimeout, setLoadingTimeout] = useState<NodeJS.Timeout | null>(null);
 
   const handleSplineLoad = () => {
+    console.log("Main Spline scene loaded");
     setMainSceneLoaded(true);
     
     // Add a small delay to ensure smooth transition
-    setTimeout(() => {
+    const timeout = setTimeout(() => {
       setLoading(false);
       
       // Delay rendering the rest of the sections slightly for better performance
@@ -43,14 +45,29 @@ const MainIndex = () => {
         setRenderSections(true);
       }, 300);
     }, 500);
+    
+    setLoadingTimeout(timeout);
   };
 
-  // Limit memory usage when switching routes
+  // Set a maximum loading time of 10 seconds
   useEffect(() => {
+    const maxLoadingTimeout = setTimeout(() => {
+      if (loading) {
+        console.log("Maximum loading time reached, showing content regardless of Spline load state");
+        setMainSceneLoaded(true);
+        setLoading(false);
+        setRenderSections(true);
+      }
+    }, 10000);
+
     return () => {
+      clearTimeout(maxLoadingTimeout);
+      if (loadingTimeout) {
+        clearTimeout(loadingTimeout);
+      }
       window.gc && window.gc();
     };
-  }, []);
+  }, [loading, loadingTimeout]);
 
   return (
     <div className="min-h-screen bg-background">

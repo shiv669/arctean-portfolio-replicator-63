@@ -2,7 +2,7 @@
 
 ## Project info
 
-**URL**: https://lovable.dev/projects/7d7672b3-6ebd-4246-a274-821fad0fff04
+**URL**: https://arctean-portfolio-replicator-63.lovable.app/
 
 ## How can I edit this code?
 

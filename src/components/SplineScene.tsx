@@ -4,9 +4,13 @@ import Spline from '@splinetool/react-spline';
 
 interface SplineSceneProps {
   onLoad?: () => void;
+  scene?: string;
 }
 
-const SplineScene = ({ onLoad }: SplineSceneProps) => {
+const SplineScene = ({ 
+  onLoad, 
+  scene = "https://prod.spline.design/1LPGwPo7iz9qGz4W/scene.splinecode" 
+}: SplineSceneProps) => {
   const [loading, setLoading] = useState(true);
 
   const handleLoad = () => {
@@ -17,7 +21,7 @@ const SplineScene = ({ onLoad }: SplineSceneProps) => {
   return (
     <div className="absolute inset-0 -z-10">
       <Spline 
-        scene="https://prod.spline.design/1LPGwPo7iz9qGz4W/scene.splinecode"
+        scene={scene}
         onLoad={handleLoad}
       />
     </div>

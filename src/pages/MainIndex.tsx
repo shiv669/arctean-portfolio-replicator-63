@@ -16,15 +16,30 @@ import MetricsSection from '../components/MetricsSection';
 import Faq from '../components/Faq';
 import AssetVault from '../components/AssetVault';
 import Footer from '../components/Footer';
+import { 
+  SplineScene2, 
+  SplineScene4, 
+  SplineScene6 
+} from '../components/AdditionalSplineScenes';
 
 const MainIndex = () => {
   const [loading, setLoading] = useState(true);
+  const [scenesLoaded, setScenesLoaded] = useState<Record<string, boolean>>({
+    main: false,
+  });
 
   const handleSplineLoad = () => {
-    // Adding a small delay to ensure smooth transition
-    setTimeout(() => {
-      setLoading(false);
-    }, 500);
+    setScenesLoaded(prev => ({ ...prev, main: true }));
+    checkAllScenesLoaded();
+  };
+
+  const checkAllScenesLoaded = () => {
+    if (scenesLoaded.main) {
+      // Adding a small delay to ensure smooth transition
+      setTimeout(() => {
+        setLoading(false);
+      }, 500);
+    }
   };
 
   return (
@@ -38,11 +53,14 @@ const MainIndex = () => {
         <Hero />
         <FeaturedProject />
         <WhyArctean />
+        <SplineScene2 />
         <Philosophy />
         <ParallaxFeatures />
+        <SplineScene4 />
         <Projects />
         <Audience />
         <InteractiveFeatures />
+        <SplineScene6 />
         <TestimonialsSlider />
         <MetricsSection />
         <Faq />

@@ -7,14 +7,25 @@ interface LoadingScreenProps {
 }
 
 const LoadingScreen = ({ isLoading }: LoadingScreenProps) => {
-  const [dots, setDots] = useState('');
+  const [loadingState, setLoadingState] = useState('••##••');
   
   useEffect(() => {
     if (!isLoading) return;
     
+    const states = [
+      '••##••',
+      '•##•••',
+      '##••••',
+      '#••••#',
+      '••••##',
+      '•••##•'
+    ];
+    
+    let currentIndex = 0;
     const interval = setInterval(() => {
-      setDots(prev => prev.length >= 3 ? '' : prev + '.');
-    }, 400);
+      currentIndex = (currentIndex + 1) % states.length;
+      setLoadingState(states[currentIndex]);
+    }, 150); // Fast and snappy
     
     return () => clearInterval(interval);
   }, [isLoading]);
@@ -35,7 +46,7 @@ const LoadingScreen = ({ isLoading }: LoadingScreenProps) => {
             className="text-center"
           >
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">Arctean</h1>
-            <p className="text-lg text-gray-300">Loading{dots}</p>
+            <p className="text-lg text-gray-300 font-mono">{loadingState}</p>
           </motion.div>
         </motion.div>
       )}

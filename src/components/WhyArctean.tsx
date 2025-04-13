@@ -38,7 +38,7 @@ const AboutUs = () => {
           <div className="col-span-12 md:col-span-6">
             <h2 className="text-3xl font-display leading-tight mb-6">
               About<br />
-              <span className="text-gray-400">Kapital</span> LLC<br/>
+              <span className="text-gray-400">Arctean</span><br/>
               <div className="inline-flex items-center justify-center">
                 <div className="blur-dot"></div>
                 <div className="blur-dot mx-1"></div>
@@ -60,7 +60,7 @@ const AboutUs = () => {
                 </div>
                 <div>
                   <h3 className="text-lg font-medium mb-1">Investment Management Expertise</h3>
-                  <p className="text-sm text-gray-400">Kapital LLC is an investment management firm serving as the General Partner for S Fund, LP – an Investment Partnership based in Texas and established in 2022.</p>
+                  <p className="text-sm text-gray-400">Arctean is an investment management firm serving as the General Partner for S Fund, LP – an Investment Partnership based in Texas and established in 2022.</p>
                 </div>
               </div>
               

@@ -27,7 +27,7 @@ const Footer = () => {
                 <ul className="space-y-3">
                   <li className="flex items-center space-x-2 text-sm text-gray-400 hover:text-white transition-colors">
                     <Mail className="w-4 h-4" />
-                    <a href="mailto:info@kapitalllc.com">info@kapitalllc.com</a>
+                    <a href="mailto:info@arctean.com">info@arctean.com</a>
                   </li>
                   <li className="flex items-center space-x-2 text-sm text-gray-400 hover:text-white transition-colors">
                     <Phone className="w-4 h-4" />
@@ -56,12 +56,11 @@ const Footer = () => {
         
         <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/10">
           <div className="flex items-center text-4xl md:text-5xl font-display font-bold tracking-tighter mb-6 md:mb-0">
-            <span className="bg-black text-white px-1 py-0.5">KAPITAL</span>
-            <span className="ml-1">LLC</span>
+            <span className="bg-black text-white px-1 py-0.5">ARCTEAN</span>
           </div>
           
           <div className="text-xs text-gray-400">
-            <p>© 2023 Kapital LLC. All Rights Reserved.</p>
+            <p>© 2023 Arctean. All Rights Reserved.</p>
             <div className="flex space-x-4 mt-2">
               <a href="#" className="hover:text-white transition-colors">Terms & Conditions</a>
               <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>

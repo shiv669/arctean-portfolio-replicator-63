@@ -26,8 +26,7 @@ const Navbar = () => {
     )}>
       <div className="container-custom flex items-center justify-between py-4">
         <a href="/" className="flex items-center text-lg font-display font-bold tracking-tight">
-          <span className="bg-black text-white px-1 py-0.5">KAPITAL</span>
-          <span className="ml-1">LLC</span>
+          <span className="bg-black text-white px-1 py-0.5">ARCTEAN</span>
         </a>
         
         <div className="hidden md:flex items-center space-x-6">

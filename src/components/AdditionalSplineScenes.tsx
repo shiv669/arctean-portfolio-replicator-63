@@ -6,7 +6,7 @@ export const SplineScene1 = () => (
 );
 
 export const SplineScene2 = () => (
-  <div className="rounded-3xl overflow-hidden my-24 relative">
+  <div className="rounded-t-3xl overflow-hidden my-24 relative">
     <SectionSplineScene 
       scene="https://prod.spline.design/8NtAMBRnowHpONFa/scene.splinecode"
       className="relative min-h-[600px]"

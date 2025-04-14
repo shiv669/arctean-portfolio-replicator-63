@@ -25,6 +25,8 @@ import {
   SplineScene6,
   SplineScene7
 } from '../components/AdditionalSplineScenes';
+import { ScrollProvider } from '../context/ScrollContext';
+import Section from '../components/Section';
 
 const MainIndex = () => {
   const [loading, setLoading] = useState(true);
@@ -70,41 +72,82 @@ const MainIndex = () => {
   }, [loading, loadingTimeout]);
 
   return (
-    <div className="min-h-screen bg-background">
-      <LoadingScreen isLoading={loading} />
-      
-      {/* We render the main scene even when loading, to allow it to be ready when we hide the loading screen */}
-      <div className={loading ? 'opacity-0' : 'opacity-100 transition-opacity duration-500'}>
-        <SplineScene onLoad={handleSplineLoad} />
-        <Navbar />
-        <Hero />
+    <ScrollProvider>
+      <div className="min-h-screen bg-background">
+        <LoadingScreen isLoading={loading} />
         
-        {/* Only render these sections after the main scene is loaded */}
-        {renderSections && (
-          <>
-            <FeaturedProject />
-            <SplineScene1 />
-            <WhyArctean />
-            <SplineScene2 />
-            <Philosophy />
-            <SplineScene3 />
-            <ParallaxFeatures />
-            <SplineScene4 />
-            <Projects />
-            <SplineScene5 />
-            <Audience />
-            <InteractiveFeatures />
-            <SplineScene6 />
-            <TestimonialsSlider />
-            <SplineScene7 />
-            <MetricsSection />
-            <Faq />
-            <AssetVault />
-            <Footer />
-          </>
-        )}
+        {/* We render the main scene even when loading, to allow it to be ready when we hide the loading screen */}
+        <div className={loading ? 'opacity-0' : 'opacity-100 transition-opacity duration-500'}>
+          <SplineScene onLoad={handleSplineLoad} />
+          <Navbar />
+          
+          <div className="section-container">
+            <Section id="hero" parallaxFactor={0.3}>
+              <Hero />
+            </Section>
+            
+            {renderSections && (
+              <>
+                <Section id="featured-project" parallaxFactor={0.2}>
+                  <FeaturedProject />
+                  <SplineScene1 />
+                </Section>
+                
+                <Section id="why-arctean" parallaxFactor={0.25}>
+                  <WhyArctean />
+                  <SplineScene2 />
+                </Section>
+                
+                <Section id="philosophy" parallaxFactor={0.2}>
+                  <Philosophy />
+                  <SplineScene3 />
+                </Section>
+                
+                <Section id="parallax-features" parallaxFactor={0.15}>
+                  <ParallaxFeatures />
+                  <SplineScene4 />
+                </Section>
+                
+                <Section id="projects" parallaxFactor={0.25}>
+                  <Projects />
+                  <SplineScene5 />
+                </Section>
+                
+                <Section id="audience" parallaxFactor={0.2}>
+                  <Audience />
+                </Section>
+                
+                <Section id="interactive-features" parallaxFactor={0.22}>
+                  <InteractiveFeatures />
+                  <SplineScene6 />
+                </Section>
+                
+                <Section id="testimonials" parallaxFactor={0.18}>
+                  <TestimonialsSlider />
+                  <SplineScene7 />
+                </Section>
+                
+                <Section id="metrics" parallaxFactor={0.25}>
+                  <MetricsSection />
+                </Section>
+                
+                <Section id="faq" parallaxFactor={0.2}>
+                  <Faq />
+                </Section>
+                
+                <Section id="asset-vault" parallaxFactor={0.15}>
+                  <AssetVault />
+                </Section>
+                
+                <Section id="footer" parallaxFactor={0.1}>
+                  <Footer />
+                </Section>
+              </>
+            )}
+          </div>
+        </div>
       </div>
-    </div>
+    </ScrollProvider>
   );
 };
 

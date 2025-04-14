@@ -47,8 +47,12 @@
   }
 
   html, body {
-    @apply bg-black text-white antialiased scroll-smooth;
+    @apply bg-black text-white antialiased overscroll-none;
     font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    position: fixed;
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -110,4 +114,16 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: #444444;
+}
+
+.section-container {
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  height: 100vh;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.section-container::-webkit-scrollbar {
+  display: none;
 }

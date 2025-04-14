@@ -43,7 +43,7 @@ const SectionSplineScene = ({
 
   return (
     <div 
-      className={className} 
+      className={`${className} rounded-t-3xl`}
       style={{ 
         width: width ? `${width}px` : '100%', 
         height: height ? `${height}px` : '100%',
@@ -52,13 +52,15 @@ const SectionSplineScene = ({
       }}
     >
       {!isLoaded && (
-        <Skeleton className="w-full h-full rounded-lg bg-gray-900/50" />
+        <Skeleton className="w-full h-full rounded-t-3xl bg-gray-900/50" />
       )}
       <div style={{ 
         width: '100%', 
         height: '100%', 
         visibility: isLoaded ? 'visible' : 'hidden',
-        position: 'relative' 
+        position: 'relative',
+        borderTopLeftRadius: '1.5rem',
+        borderTopRightRadius: '1.5rem'
       }}>
         {mounted && (
           <Spline 

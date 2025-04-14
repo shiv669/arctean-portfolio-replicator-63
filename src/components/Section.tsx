@@ -22,17 +22,16 @@ const Section: React.FC<SectionProps> = ({
   const { registerSection, currentSection, sections } = useScroll();
   
   useEffect(() => {
-    registerSection(sectionRef);
-    console.log(`Section registered: ${id}`);
+    if (sectionRef.current) {
+      registerSection(sectionRef);
+      console.log(`Section registered: ${id}`);
+    }
   }, [registerSection, id]);
 
   const sectionIndex = sections.indexOf(sectionRef);
   const isActive = sectionIndex === currentSection;
   const isAfterCurrent = sectionIndex > currentSection;
   const isBeforeCurrent = sectionIndex < currentSection;
-
-  // Calculate the parallax effect for this section
-  const offset = (sectionIndex - currentSection) * parallaxFactor;
 
   return (
     <motion.div
@@ -49,7 +48,7 @@ const Section: React.FC<SectionProps> = ({
         y: isAfterCurrent ? "100%" : "0%",
         zIndex: 10 - sectionIndex,
       }}
-      transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+      transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
     >
       <motion.div
         className="h-full w-full"
@@ -57,7 +56,7 @@ const Section: React.FC<SectionProps> = ({
         animate={{ 
           y: isBeforeCurrent ? `${-20 * parallaxFactor}%` : "0%"
         }}
-        transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+        transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
       >
         {children}
       </motion.div>

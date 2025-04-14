@@ -28,7 +28,6 @@ export const ScrollProvider: React.FC<ScrollProviderProps> = ({ children }) => {
   const scrolling = useRef(false);
   const lastScrollTime = useRef(Date.now());
   const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
 
   // Reset sections array on mount
   useEffect(() => {
@@ -48,12 +47,6 @@ export const ScrollProvider: React.FC<ScrollProviderProps> = ({ children }) => {
   const scrollToSection = (index: number) => {
     if (index >= 0 && index < sections.length) {
       setCurrentSection(index);
-      if (sections[index]?.current) {
-        sections[index].current?.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
-      }
     }
   };
 
@@ -62,7 +55,7 @@ export const ScrollProvider: React.FC<ScrollProviderProps> = ({ children }) => {
       e.preventDefault();
       
       const now = Date.now();
-      if (scrolling.current || now - lastScrollTime.current < 1000) return;
+      if (scrolling.current || now - lastScrollTime.current < 800) return;
       
       scrolling.current = true;
       lastScrollTime.current = now;
@@ -78,7 +71,7 @@ export const ScrollProvider: React.FC<ScrollProviderProps> = ({ children }) => {
       if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
       scrollTimeout.current = setTimeout(() => {
         scrolling.current = false;
-      }, 1000);
+      }, 800);
     };
 
     // Add wheel event listener to the document
@@ -89,17 +82,6 @@ export const ScrollProvider: React.FC<ScrollProviderProps> = ({ children }) => {
       if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
     };
   }, [currentSection, sections.length]);
-
-  // Ensure section changes actually scroll to the section
-  useEffect(() => {
-    if (sections[currentSection]?.current) {
-      console.log(`Scrolling to section ${currentSection}`);
-      sections[currentSection].current?.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
-  }, [currentSection, sections]);
 
   return (
     <ScrollContext.Provider value={{ currentSection, sections, registerSection, scrollToSection }}>

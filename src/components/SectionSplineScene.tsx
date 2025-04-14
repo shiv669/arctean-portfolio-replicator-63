@@ -48,14 +48,6 @@ const SectionSplineScene = ({
     return () => clearTimeout(timer);
   }, [isLoaded, loadingAttempts]);
 
-  // Cleanup function to help with memory issues
-  useEffect(() => {
-    return () => {
-      // Force garbage collection when component unmounts
-      window.gc && window.gc();
-    };
-  }, []);
-
   return (
     <div 
       className={`${className} rounded-t-3xl`}

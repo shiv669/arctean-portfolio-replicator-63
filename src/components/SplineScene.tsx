@@ -48,14 +48,6 @@ const SplineScene = ({
     return () => clearTimeout(timer);
   }, [loading, loadingAttempts]);
 
-  // Cleanup function to help with memory issues
-  useEffect(() => {
-    return () => {
-      // Force garbage collection when component unmounts
-      window.gc && window.gc();
-    };
-  }, []);
-
   return (
     <div 
       className={`fixed inset-0 w-full h-screen overflow-hidden pointer-events-none ${className}`} 

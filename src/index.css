@@ -47,13 +47,12 @@
   }
 
   html, body {
-    @apply bg-black text-white antialiased overscroll-none;
+    @apply bg-black text-white antialiased;
     font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
-    overflow: hidden;
     height: 100%;
     width: 100%;
+    overflow: hidden;
     position: fixed;
-    touch-action: none;
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -118,8 +117,7 @@
 }
 
 .section-container {
-  overflow-y: hidden; /* Changed from auto to hidden */
-  scroll-snap-type: y mandatory;
+  overflow-y: hidden;
   height: 100vh;
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -129,9 +127,3 @@
 .section-container::-webkit-scrollbar {
   display: none;
 }
-
-/* Prevent touch scrolling */
-.section-container {
-  touch-action: none;
-}
-

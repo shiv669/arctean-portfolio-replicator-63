@@ -18,7 +18,6 @@ const SectionSplineScene = ({
 }: SectionSplineSceneProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [loadingAttempts, setLoadingAttempts] = useState(0);
 
   // Mount state helps prevent unmounting issues
   useEffect(() => {
@@ -34,23 +33,17 @@ const SectionSplineScene = ({
     console.log("SectionSplineScene loaded successfully:", scene);
   };
 
-  // Force reload if it takes too long
+  // Cleanup function to help with memory issues
   useEffect(() => {
-    const timer = setTimeout(() => {
-      if (!isLoaded && loadingAttempts < 3) {
-        console.log('Forcing SectionSplineScene reload, attempt:', loadingAttempts + 1);
-        setLoadingAttempts(prev => prev + 1);
-        setMounted(false);
-        setTimeout(() => setMounted(true), 100);
-      }
-    }, 8000);
-    
-    return () => clearTimeout(timer);
-  }, [isLoaded, loadingAttempts]);
+    return () => {
+      // Force garbage collection when component unmounts
+      window.gc && window.gc();
+    };
+  }, []);
 
   return (
     <div 
-      className={`${className} rounded-t-3xl`}
+      className={className} 
       style={{ 
         width: width ? `${width}px` : '100%', 
         height: height ? `${height}px` : '100%',
@@ -59,15 +52,13 @@ const SectionSplineScene = ({
       }}
     >
       {!isLoaded && (
-        <Skeleton className="w-full h-full rounded-t-3xl bg-gray-900/50" />
+        <Skeleton className="w-full h-full rounded-lg bg-gray-900/50" />
       )}
       <div style={{ 
         width: '100%', 
         height: '100%', 
         visibility: isLoaded ? 'visible' : 'hidden',
-        position: 'relative',
-        borderTopLeftRadius: '1.5rem',
-        borderTopRightRadius: '1.5rem'
+        position: 'relative' 
       }}>
         {mounted && (
           <Spline 

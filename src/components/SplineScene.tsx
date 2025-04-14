@@ -5,26 +5,22 @@ import Spline from '@splinetool/react-spline';
 interface SplineSceneProps {
   onLoad?: () => void;
   scene?: string;
-  className?: string;
 }
 
 const SplineScene = ({ 
   onLoad, 
-  scene = "https://prod.spline.design/1LPGwPo7iz9qGz4W/scene.splinecode",
-  className = ""
+  scene = "https://prod.spline.design/1LPGwPo7iz9qGz4W/scene.splinecode" 
 }: SplineSceneProps) => {
   const [loading, setLoading] = useState(true);
   const [mounted, setMounted] = useState(false);
-  const [loadingAttempts, setLoadingAttempts] = useState(0);
 
   // Mount state helps prevent unmounting issues
   useEffect(() => {
     setMounted(true);
-    console.log('SplineScene mounted, scene:', scene);
     return () => {
       setMounted(false);
     };
-  }, [scene]);
+  }, []);
 
   const handleLoad = () => {
     setLoading(false);
@@ -34,33 +30,16 @@ const SplineScene = ({
     console.log('Spline scene loaded successfully');
   };
 
-  // Force reload if it takes too long
+  // Cleanup function to help with memory issues
   useEffect(() => {
-    const timer = setTimeout(() => {
-      if (loading && loadingAttempts < 3) {
-        console.log('Forcing SplineScene reload, attempt:', loadingAttempts + 1);
-        setLoadingAttempts(prev => prev + 1);
-        setMounted(false);
-        setTimeout(() => setMounted(true), 100);
-      }
-    }, 8000);
-    
-    return () => clearTimeout(timer);
-  }, [loading, loadingAttempts]);
+    return () => {
+      // Force garbage collection when component unmounts
+      window.gc && window.gc();
+    };
+  }, []);
 
   return (
-    <div 
-      className={`fixed inset-0 w-full h-screen overflow-hidden pointer-events-none ${className}`} 
-      style={{ 
-        zIndex: -10,
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        visibility: 'visible'
-      }}
-    >
+    <div className="absolute inset-0 -z-10 overflow-hidden" style={{ pointerEvents: 'none' }}>
       {mounted && (
         <Spline 
           scene={scene}

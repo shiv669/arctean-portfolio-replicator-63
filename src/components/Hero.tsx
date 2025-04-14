@@ -80,13 +80,13 @@ const Hero = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
     >
-      {/* Animated background elements */}
-      <motion.div 
+      {/* We don't need the background gradient here since we have the Spline scene */}
+      {/* <motion.div 
         className="absolute inset-0 bg-gradient-to-r from-black via-gray-900/10 to-black bg-[length:400%_400%]"
         variants={gradientVariants}
         initial="initial"
         animate="animate"
-      ></motion.div>
+      ></motion.div> */}
       
       {/* Sand grey glow behind the heading */}
       <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/3 w-[700px] h-[200px] rounded-full bg-sandgrey-500/10 blur-[100px]"></div>
@@ -225,8 +225,9 @@ const Hero = () => {
         </motion.div>
       </div>
       
-      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black/20 to-transparent"></div>
-      <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,rgba(100,100,100,0.15)_0%,rgba(0,0,0,0)_50%)]"></div>
+      {/* Subtle gradient overlay to ensure text visibility against Spline scene */}
+      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black/40 via-black/20 to-black/30"></div>
+      <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.4)_0%,rgba(0,0,0,0)_70%)]"></div>
     </motion.section>
   );
 };

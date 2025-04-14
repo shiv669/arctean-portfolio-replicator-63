@@ -23,14 +23,15 @@ const Section: React.FC<SectionProps> = ({
   
   useEffect(() => {
     registerSection(sectionRef);
-  }, [registerSection]);
+    console.log(`Section registered: ${id}`);
+  }, [registerSection, id]);
 
-  const isActive = sections.indexOf(sectionRef) === currentSection;
-  const isAfterCurrent = sections.indexOf(sectionRef) > currentSection;
-  const isBeforeCurrent = sections.indexOf(sectionRef) < currentSection;
+  const sectionIndex = sections.indexOf(sectionRef);
+  const isActive = sectionIndex === currentSection;
+  const isAfterCurrent = sectionIndex > currentSection;
+  const isBeforeCurrent = sectionIndex < currentSection;
 
   // Calculate the parallax effect for this section
-  const sectionIndex = sections.indexOf(sectionRef);
   const offset = (sectionIndex - currentSection) * parallaxFactor;
 
   return (

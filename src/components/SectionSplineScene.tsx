@@ -18,6 +18,7 @@ const SectionSplineScene = ({
 }: SectionSplineSceneProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [loadingAttempts, setLoadingAttempts] = useState(0);
 
   // Mount state helps prevent unmounting issues
   useEffect(() => {
@@ -32,6 +33,20 @@ const SectionSplineScene = ({
     setIsLoaded(true);
     console.log("SectionSplineScene loaded successfully:", scene);
   };
+
+  // Force reload if it takes too long
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (!isLoaded && loadingAttempts < 3) {
+        console.log('Forcing SectionSplineScene reload, attempt:', loadingAttempts + 1);
+        setLoadingAttempts(prev => prev + 1);
+        setMounted(false);
+        setTimeout(() => setMounted(true), 100);
+      }
+    }, 8000);
+    
+    return () => clearTimeout(timer);
+  }, [isLoaded, loadingAttempts]);
 
   // Cleanup function to help with memory issues
   useEffect(() => {

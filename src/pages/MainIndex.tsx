@@ -60,7 +60,7 @@ const MainIndex = () => {
         setLoading(false);
         setRenderSections(true);
       }
-    }, 10000);
+    }, 8000); // Reduced from 10s to 8s
 
     return () => {
       clearTimeout(maxLoadingTimeout);
@@ -73,7 +73,7 @@ const MainIndex = () => {
 
   return (
     <ScrollProvider>
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-background" style={{ overflow: 'hidden' }}>
         <LoadingScreen isLoading={loading} />
         
         {/* We render the main scene even when loading, to allow it to be ready when we hide the loading screen */}

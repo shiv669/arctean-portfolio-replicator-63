@@ -53,6 +53,7 @@
     height: 100%;
     width: 100%;
     position: fixed;
+    touch-action: none;
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -117,13 +118,20 @@
 }
 
 .section-container {
-  overflow-y: auto;
+  overflow-y: hidden; /* Changed from auto to hidden */
   scroll-snap-type: y mandatory;
   height: 100vh;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  position: relative;
 }
 
 .section-container::-webkit-scrollbar {
   display: none;
 }
+
+/* Prevent touch scrolling */
+.section-container {
+  touch-action: none;
+}
+

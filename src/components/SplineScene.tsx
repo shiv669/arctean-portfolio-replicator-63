@@ -15,14 +15,16 @@ const SplineScene = ({
 }: SplineSceneProps) => {
   const [loading, setLoading] = useState(true);
   const [mounted, setMounted] = useState(false);
+  const [loadingAttempts, setLoadingAttempts] = useState(0);
 
   // Mount state helps prevent unmounting issues
   useEffect(() => {
     setMounted(true);
+    console.log('SplineScene mounted, scene:', scene);
     return () => {
       setMounted(false);
     };
-  }, []);
+  }, [scene]);
 
   const handleLoad = () => {
     setLoading(false);
@@ -31,6 +33,20 @@ const SplineScene = ({
     // Log successful loading to debug
     console.log('Spline scene loaded successfully');
   };
+
+  // Force reload if it takes too long
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (loading && loadingAttempts < 3) {
+        console.log('Forcing SplineScene reload, attempt:', loadingAttempts + 1);
+        setLoadingAttempts(prev => prev + 1);
+        setMounted(false);
+        setTimeout(() => setMounted(true), 100);
+      }
+    }, 8000);
+    
+    return () => clearTimeout(timer);
+  }, [loading, loadingAttempts]);
 
   // Cleanup function to help with memory issues
   useEffect(() => {
@@ -41,7 +57,18 @@ const SplineScene = ({
   }, []);
 
   return (
-    <div className={`fixed inset-0 w-full h-screen -z-10 overflow-hidden ${className}`} style={{ pointerEvents: 'none', top: 0 }}>
+    <div 
+      className={`fixed inset-0 w-full h-screen overflow-hidden pointer-events-none ${className}`} 
+      style={{ 
+        zIndex: -10,
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        visibility: 'visible'
+      }}
+    >
       {mounted && (
         <Spline 
           scene={scene}

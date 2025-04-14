@@ -5,6 +5,7 @@ interface ScrollContextType {
   currentSection: number;
   sections: React.RefObject<HTMLDivElement>[];
   registerSection: (ref: React.RefObject<HTMLDivElement>) => void;
+  scrollToSection: (index: number) => void;
 }
 
 const ScrollContext = createContext<ScrollContextType | undefined>(undefined);
@@ -27,9 +28,33 @@ export const ScrollProvider: React.FC<ScrollProviderProps> = ({ children }) => {
   const scrolling = useRef(false);
   const lastScrollTime = useRef(Date.now());
   const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Reset sections array on mount
+  useEffect(() => {
+    setSections([]);
+  }, []);
 
   const registerSection = (ref: React.RefObject<HTMLDivElement>) => {
-    setSections(prev => [...prev, ref]);
+    setSections(prev => {
+      // Check if the ref already exists in the array
+      if (!prev.includes(ref)) {
+        return [...prev, ref];
+      }
+      return prev;
+    });
+  };
+
+  const scrollToSection = (index: number) => {
+    if (index >= 0 && index < sections.length) {
+      setCurrentSection(index);
+      if (sections[index]?.current) {
+        sections[index].current?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    }
   };
 
   useEffect(() => {
@@ -37,33 +62,38 @@ export const ScrollProvider: React.FC<ScrollProviderProps> = ({ children }) => {
       e.preventDefault();
       
       const now = Date.now();
-      if (scrolling.current || now - lastScrollTime.current < 800) return;
+      if (scrolling.current || now - lastScrollTime.current < 1000) return;
       
       scrolling.current = true;
       lastScrollTime.current = now;
       
       if (e.deltaY > 0 && currentSection < sections.length - 1) {
+        // Scroll down
         setCurrentSection(prev => prev + 1);
       } else if (e.deltaY < 0 && currentSection > 0) {
+        // Scroll up
         setCurrentSection(prev => prev - 1);
       }
       
       if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
       scrollTimeout.current = setTimeout(() => {
         scrolling.current = false;
-      }, 800);
+      }, 1000);
     };
 
-    window.addEventListener('wheel', handleWheel, { passive: false });
+    // Add wheel event listener to the document
+    document.addEventListener('wheel', handleWheel, { passive: false });
     
     return () => {
-      window.removeEventListener('wheel', handleWheel);
+      document.removeEventListener('wheel', handleWheel);
       if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
     };
   }, [currentSection, sections.length]);
 
+  // Ensure section changes actually scroll to the section
   useEffect(() => {
     if (sections[currentSection]?.current) {
+      console.log(`Scrolling to section ${currentSection}`);
       sections[currentSection].current?.scrollIntoView({
         behavior: 'smooth',
         block: 'start'
@@ -72,7 +102,7 @@ export const ScrollProvider: React.FC<ScrollProviderProps> = ({ children }) => {
   }, [currentSection, sections]);
 
   return (
-    <ScrollContext.Provider value={{ currentSection, sections, registerSection }}>
+    <ScrollContext.Provider value={{ currentSection, sections, registerSection, scrollToSection }}>
       {children}
     </ScrollContext.Provider>
   );

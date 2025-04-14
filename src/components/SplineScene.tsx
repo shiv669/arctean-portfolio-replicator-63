@@ -5,13 +5,11 @@ import Spline from '@splinetool/react-spline';
 interface SplineSceneProps {
   onLoad?: () => void;
   scene?: string;
-  fixed?: boolean;
 }
 
 const SplineScene = ({ 
   onLoad, 
-  scene = "https://prod.spline.design/1LPGwPo7iz9qGz4W/scene.splinecode",
-  fixed = true
+  scene = "https://prod.spline.design/1LPGwPo7iz9qGz4W/scene.splinecode" 
 }: SplineSceneProps) => {
   const [loading, setLoading] = useState(true);
   const [mounted, setMounted] = useState(false);
@@ -41,10 +39,7 @@ const SplineScene = ({
   }, []);
 
   return (
-    <div 
-      className={`${fixed ? 'fixed' : 'absolute'} inset-0 -z-10 overflow-hidden`} 
-      style={{ pointerEvents: 'none' }}
-    >
+    <div className="absolute inset-0 -z-10 overflow-hidden" style={{ pointerEvents: 'none' }}>
       {mounted && (
         <Spline 
           scene={scene}

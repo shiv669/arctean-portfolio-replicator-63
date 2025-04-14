@@ -16,7 +16,6 @@ import MetricsSection from '../components/MetricsSection';
 import Faq from '../components/Faq';
 import AssetVault from '../components/AssetVault';
 import Footer from '../components/Footer';
-import ScrolljackingProvider from '../components/ScrolljackingProvider';
 import { 
   SplineScene1,
   SplineScene2, 
@@ -76,66 +75,29 @@ const MainIndex = () => {
       
       {/* We render the main scene even when loading, to allow it to be ready when we hide the loading screen */}
       <div className={loading ? 'opacity-0' : 'opacity-100 transition-opacity duration-500'}>
-        {/* Main Spline scene fixed behind all content */}
-        <SplineScene onLoad={handleSplineLoad} fixed={true} />
-        
-        {/* Navbar stays fixed at the top */}
+        <SplineScene onLoad={handleSplineLoad} />
         <Navbar />
-        
-        {/* Hero section with the main Spline */}
         <Hero />
         
         {/* Only render these sections after the main scene is loaded */}
         {renderSections && (
-          <ScrolljackingProvider>
-            <section className="h-screen w-full">
-              <FeaturedProject />
-            </section>
-            
-            <section className="h-screen w-full">
-              <SplineScene1 />
-              <WhyArctean />
-            </section>
-            
-            <section className="h-screen w-full">
-              <SplineScene2 />
-              <Philosophy />
-            </section>
-            
-            <section className="h-screen w-full">
-              <SplineScene3 />
-              <ParallaxFeatures />
-            </section>
-            
-            <section className="h-screen w-full">
-              <SplineScene4 />
-              <Projects />
-            </section>
-            
-            <section className="h-screen w-full">
-              <SplineScene5 />
-              <Audience />
-            </section>
-            
-            <section className="h-screen w-full">
-              <InteractiveFeatures />
-            </section>
-            
-            <section className="h-screen w-full">
-              <SplineScene6 />
-              <TestimonialsSlider />
-            </section>
-            
-            <section className="h-screen w-full">
-              <SplineScene7 />
-              <MetricsSection />
-            </section>
-          </ScrolljackingProvider>
-        )}
-        
-        {/* Footer and FAQ outside the scrolljacking for better usability */}
-        {renderSections && (
           <>
+            <FeaturedProject />
+            <SplineScene1 />
+            <WhyArctean />
+            <SplineScene2 />
+            <Philosophy />
+            <SplineScene3 />
+            <ParallaxFeatures />
+            <SplineScene4 />
+            <Projects />
+            <SplineScene5 />
+            <Audience />
+            <InteractiveFeatures />
+            <SplineScene6 />
+            <TestimonialsSlider />
+            <SplineScene7 />
+            <MetricsSection />
             <Faq />
             <AssetVault />
             <Footer />
